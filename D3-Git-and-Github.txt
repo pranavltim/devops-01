@@ -1,0 +1,44 @@
+CI/CD => continuous integration / continuous deployment
+
+
+
+git init --bare (only at server side)
+git init (other machines)
+
+SSH - secure shell
+scp - 
+telnet - terminal network
+
+
+Git workflow:
+	git server >> git init --bare (it creates a central repository)
+	git client >> git init (it creates a local repository)
+
+	git status
+	
+	git add
+	
+	git commit [ -m flag use to give any message]
+
+	git log [shows committed changes]
+	
+	git remote add origin root@<ipadd>:<central_repo>
+	
+	git remote -v
+	
+	git push origin master
+		
+	git clone root@<ipadd>:<central_repo>
+	
+	git pull origin master
+
+	git branch
+	
+
+vim /etc/ssh/sshd_config ( this file will control ssh)
+
+	systemctl restart sshd
+	systemctl enable sshd
+
+
+	ssh-copy-id (will copy public key)

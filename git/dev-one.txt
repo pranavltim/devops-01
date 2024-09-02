@@ -1,0 +1,506 @@
+Microsoft Windows [Version 10.0.22631.4037]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\10748090>cd Downloads
+
+C:\Users\10748090\Downloads>ssh -i "git-server-key.pem" ec2-user@ec2-18-189-145-227.us-east-2.compute.amazonaws.com
+The authenticity of host 'ec2-18-189-145-227.us-east-2.compute.amazonaws.com (18.189.145.227)' can't be established.
+ED25519 key fingerprint is SHA256:TfiWTjPFL+jjrL6ULBByELFcH7AjAuPrRqk5MGOQEM4.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'ec2-18-189-145-227.us-east-2.compute.amazonaws.com' (ED25519) to the list of known hosts.
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-8-32 ~]$ sudo su -
+[root@ip-172-31-8-32 ~]# hostnamectl set-hostname node1.example.com
+[root@ip-172-31-8-32 ~]# bash
+[root@node1 ~]# yum install git
+Last metadata expiration check: 0:12:50 ago on Thu Aug 29 05:19:29 2024.
+Dependencies resolved.
+=====================================================================================================================================
+ Package                          Architecture           Version                                   Repository                   Size
+=====================================================================================================================================
+Installing:
+ git                              x86_64                 2.40.1-1.amzn2023.0.3                     amazonlinux                  54 k
+Installing dependencies:
+ git-core                         x86_64                 2.40.1-1.amzn2023.0.3                     amazonlinux                 4.3 M
+ git-core-doc                     noarch                 2.40.1-1.amzn2023.0.3                     amazonlinux                 2.6 M
+ perl-Error                       noarch                 1:0.17029-5.amzn2023.0.2                  amazonlinux                  41 k
+ perl-File-Find                   noarch                 1.37-477.amzn2023.0.6                     amazonlinux                  26 k
+ perl-Git                         noarch                 2.40.1-1.amzn2023.0.3                     amazonlinux                  42 k
+ perl-TermReadKey                 x86_64                 2.38-9.amzn2023.0.2                       amazonlinux                  36 k
+ perl-lib                         x86_64                 0.65-477.amzn2023.0.6                     amazonlinux                  15 k
+
+Transaction Summary
+=====================================================================================================================================
+Install  8 Packages
+
+Total download size: 7.1 M
+Installed size: 34 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/8): git-2.40.1-1.amzn2023.0.3.x86_64.rpm                                                          884 kB/s |  54 kB     00:00
+(2/8): perl-Error-0.17029-5.amzn2023.0.2.noarch.rpm                                                  2.0 MB/s |  41 kB     00:00
+(3/8): git-core-doc-2.40.1-1.amzn2023.0.3.noarch.rpm                                                  24 MB/s | 2.6 MB     00:00
+(4/8): perl-File-Find-1.37-477.amzn2023.0.6.noarch.rpm                                               907 kB/s |  26 kB     00:00
+(5/8): perl-Git-2.40.1-1.amzn2023.0.3.noarch.rpm                                                     2.3 MB/s |  42 kB     00:00
+(6/8): perl-TermReadKey-2.38-9.amzn2023.0.2.x86_64.rpm                                               1.7 MB/s |  36 kB     00:00
+(7/8): git-core-2.40.1-1.amzn2023.0.3.x86_64.rpm                                                      27 MB/s | 4.3 MB     00:00
+(8/8): perl-lib-0.65-477.amzn2023.0.6.x86_64.rpm                                                     475 kB/s |  15 kB     00:00
+-------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                 32 MB/s | 7.1 MB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                             1/1
+  Installing       : git-core-2.40.1-1.amzn2023.0.3.x86_64                                                                       1/8
+  Installing       : git-core-doc-2.40.1-1.amzn2023.0.3.noarch                                                                   2/8
+  Installing       : perl-lib-0.65-477.amzn2023.0.6.x86_64                                                                       3/8
+  Installing       : perl-TermReadKey-2.38-9.amzn2023.0.2.x86_64                                                                 4/8
+  Installing       : perl-File-Find-1.37-477.amzn2023.0.6.noarch                                                                 5/8
+  Installing       : perl-Error-1:0.17029-5.amzn2023.0.2.noarch                                                                  6/8
+  Installing       : perl-Git-2.40.1-1.amzn2023.0.3.noarch                                                                       7/8
+  Installing       : git-2.40.1-1.amzn2023.0.3.x86_64                                                                            8/8
+  Running scriptlet: git-2.40.1-1.amzn2023.0.3.x86_64                                                                            8/8
+  Verifying        : git-2.40.1-1.amzn2023.0.3.x86_64                                                                            1/8
+  Verifying        : git-core-2.40.1-1.amzn2023.0.3.x86_64                                                                       2/8
+  Verifying        : git-core-doc-2.40.1-1.amzn2023.0.3.noarch                                                                   3/8
+  Verifying        : perl-Error-1:0.17029-5.amzn2023.0.2.noarch                                                                  4/8
+  Verifying        : perl-File-Find-1.37-477.amzn2023.0.6.noarch                                                                 5/8
+  Verifying        : perl-Git-2.40.1-1.amzn2023.0.3.noarch                                                                       6/8
+  Verifying        : perl-TermReadKey-2.38-9.amzn2023.0.2.x86_64                                                                 7/8
+  Verifying        : perl-lib-0.65-477.amzn2023.0.6.x86_64                                                                       8/8
+
+Installed:
+  git-2.40.1-1.amzn2023.0.3.x86_64            git-core-2.40.1-1.amzn2023.0.3.x86_64       git-core-doc-2.40.1-1.amzn2023.0.3.noarch
+  perl-Error-1:0.17029-5.amzn2023.0.2.noarch  perl-File-Find-1.37-477.amzn2023.0.6.noarch perl-Git-2.40.1-1.amzn2023.0.3.noarch
+  perl-TermReadKey-2.38-9.amzn2023.0.2.x86_64 perl-lib-0.65-477.amzn2023.0.6.x86_64
+
+Complete!
+[root@node1 ~]# client_loop: send disconnect: Connection reset
+
+C:\Users\10748090\Downloads>ssh -i "git-server-key.pem" ec2-user@ec2-18-189-145-227.us-east-2.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Thu Aug 29 05:31:31 2024 from 165.225.120.230
+[ec2-user@node1 ~]$ sudo su
+[root@node1 ec2-user]# mkdir /dev-one
+[root@node1 ec2-user]# cd /dev-one/
+[root@node1 dev-one]# git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+Initialized empty Git repository in /dev-one/.git/
+[root@node1 dev-one]# ls -a
+.  ..  .git
+[root@node1 dev-one]# pwd
+/dev-one
+[root@node1 dev-one]# client_loop: send disconnect: Connection reset
+
+C:\Users\10748090\Downloads>ssh -i "git-server-key.pem" ec2-user@ec2-18-189-145-227.us-east-2.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Thu Aug 29 06:08:16 2024 from 136.226.233.31
+[ec2-user@node1 ~]$ sudo su
+[root@node1 ec2-user]# vim index.html
+[root@node1 ec2-user]# ll
+total 4
+-rw-r--r--. 1 root root 24 Aug 29 06:56 index.html
+[root@node1 ec2-user]# git status
+fatal: not a git repository (or any of the parent directories): .git
+[root@node1 ec2-user]# git status
+fatal: not a git repository (or any of the parent directories): .git
+[root@node1 ec2-user]# git add index.html
+fatal: not a git repository (or any of the parent directories): .git
+[root@node1 ec2-user]# git add index.html
+fatal: not a git repository (or any of the parent directories): .git
+[root@node1 ec2-user]# yum install git -y
+Last metadata expiration check: 1:38:32 ago on Thu Aug 29 05:19:29 2024.
+Package git-2.40.1-1.amzn2023.0.3.x86_64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[root@node1 ec2-user]# git status
+fatal: not a git repository (or any of the parent directories): .git
+[root@node1 ec2-user]# ll
+total 4
+-rw-r--r--. 1 root root 24 Aug 29 06:56 index.html
+[root@node1 ec2-user]# mkdir /dev-one
+mkdir: cannot create directory ‘/dev-one’: File exists
+[root@node1 ec2-user]# cd /dev-one/
+[root@node1 dev-one]# git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+[root@node1 dev-one]# git add index.html
+fatal: pathspec 'index.html' did not match any files
+[root@node1 dev-one]# vim index.html
+[root@node1 dev-one]# git add index.html
+[root@node1 dev-one]# git commit -m "first-msg" index.html
+[master (root-commit) 4f31f27] first-msg
+ Committer: root <root@node1.example.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 3 insertions(+)
+ create mode 100644 index.html
+[root@node1 dev-one]# git log
+commit 4f31f274c84946056f282745e4d1b32005580034 (HEAD -> master)
+Author: root <root@node1.example.com>
+Date:   Thu Aug 29 07:06:39 2024 +0000
+
+    first-msg
+[root@node1 dev-one]# git status
+On branch master
+nothing to commit, working tree clean
+[root@node1 dev-one]# cd
+[root@node1 ~]# ls -s
+total 0
+[root@node1 ~]# ls -a
+.  ..  .bash_logout  .bash_profile  .bashrc  .cshrc  .lesshst  .ssh  .tcshrc  .viminfo
+[root@node1 ~]# cd .ssh/
+[root@node1 .ssh]# ll
+total 4
+-rw-------. 1 root root 562 Aug 29 05:19 authorized_keys
+[root@node1 .ssh]# cat authorized_keys
+no-port-forwarding,no-agent-forwarding,no-X11-forwarding,command="echo 'Please login as the user \"ec2-user\" rather than the user \"root\".';echo;sleep 10;exit 142" ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCIEJ3PlzKPtZAuC16DMiGKViAxz5NQsrYBakC90aUA+/tRxKWpcmkJPqoIAYrUsU9TUY6aXgho4d07iqjnyWxrLswFvMSowLoI82fVEdewA/bkQODrf+OBB+0miawV5u/9upWjg2pUQ4sZk3h/jaKhIv/7o5zq5kn1SVk5LGUSLF2PuodxiPf5b8G3JrR2Z2fXd/15Q1/tdG1VDBn6OBnITnkgVsI+MsmODqTRA3fIEh+ceXMlZ0NGn63EFAdj/JEtPy8AzjTuVgDu2+iXDMLv7EaE4k21bIzvEawQ+fcCVvC6kmy9+YWreYtSjSEMQo1N0VS3rr4wlzAwZ23HJt6z git-server-key
+[root@node1 .ssh]# cd
+[root@node1 ~]# ping 172.31.7.68
+PING 172.31.7.68 (172.31.7.68) 56(84) bytes of data.
+From 172.31.8.32 icmp_seq=1 Destination Host Unreachable
+From 172.31.8.32 icmp_seq=2 Destination Host Unreachable
+From 172.31.8.32 icmp_seq=3 Destination Host Unreachable
+From 172.31.8.32 icmp_seq=4 Destination Host Unreachable
+From 172.31.8.32 icmp_seq=5 Destination Host Unreachable
+From 172.31.8.32 icmp_seq=6 Destination Host Unreachable
+From 172.31.8.32 icmp_seq=7 Destination Host Unreachable
+From 172.31.8.32 icmp_seq=8 Destination Host Unreachable
+
+[root@node1 ~]#
+[root@node1 ~]# ping 172.31.8.246
+PING 172.31.8.246 (172.31.8.246) 56(84) bytes of data.
+64 bytes from 172.31.8.246: icmp_seq=1 ttl=127 time=1.78 ms
+64 bytes from 172.31.8.246: icmp_seq=2 ttl=127 time=0.883 ms
+64 bytes from 172.31.8.246: icmp_seq=3 ttl=127 time=0.778 ms
+64 bytes from 172.31.8.246: icmp_seq=4 ttl=127 time=0.781 ms
+64 bytes from 172.31.8.246: icmp_seq=5 ttl=127 time=0.432 ms
+64 bytes from 172.31.8.246: icmp_seq=6 ttl=127 time=0.565 ms
+64 bytes from 172.31.8.246: icmp_seq=7 ttl=127 time=0.670 ms
+64 bytes from 172.31.8.246: icmp_seq=8 ttl=127 time=0.454 ms
+64 bytes from 172.31.8.246: icmp_seq=9 ttl=127 time=1.04 ms
+64 bytes from 172.31.8.246: icmp_seq=10 ttl=127 time=1.17 ms
+64 bytes from 172.31.8.246: icmp_seq=11 ttl=127 time=0.381 ms
+64 bytes from 172.31.8.246: icmp_seq=12 ttl=127 time=0.546 ms
+64 bytes from 172.31.8.246: icmp_seq=13 ttl=127 time=1.27 ms
+64 bytes from 172.31.8.246: icmp_seq=14 ttl=127 time=0.822 ms
+64 bytes from 172.31.8.246: icmp_seq=15 ttl=127 time=1.13 ms
+64 bytes from 172.31.8.246: icmp_seq=16 ttl=127 time=0.501 ms
+64 bytes from 172.31.8.246: icmp_seq=17 ttl=127 time=0.855 ms
+64 bytes from 172.31.8.246: icmp_seq=18 ttl=127 time=1.13 ms
+64 bytes from 172.31.8.246: icmp_seq=19 ttl=127 time=0.420 ms
+64 bytes from 172.31.8.246: icmp_seq=20 ttl=127 time=0.685 ms
+64 bytes from 172.31.8.246: icmp_seq=21 ttl=127 time=0.868 ms
+64 bytes from 172.31.8.246: icmp_seq=22 ttl=127 time=0.609 ms
+64 bytes from 172.31.8.246: icmp_seq=23 ttl=127 time=0.880 ms
+64 bytes from 172.31.8.246: icmp_seq=24 ttl=127 time=0.672 ms
+64 bytes from 172.31.8.246: icmp_seq=25 ttl=127 time=0.865 ms
+64 bytes from 172.31.8.246: icmp_seq=26 ttl=127 time=0.448 ms
+64 bytes from 172.31.8.246: icmp_seq=27 ttl=127 time=1.27 ms
+64 bytes from 172.31.8.246: icmp_seq=28 ttl=127 time=0.951 ms
+64 bytes from 172.31.8.246: icmp_seq=29 ttl=127 time=0.418 ms
+64 bytes from 172.31.8.246: icmp_seq=30 ttl=127 time=0.807 ms
+64 bytes from 172.31.8.246: icmp_seq=31 ttl=127 time=0.742 ms
+64 bytes from 172.31.8.246: icmp_seq=32 ttl=127 time=0.595 ms
+64 bytes from 172.31.8.246: icmp_seq=33 ttl=127 time=0.907 ms
+64 bytes from 172.31.8.246: icmp_seq=34 ttl=127 time=0.352 ms
+64 bytes from 172.31.8.246: icmp_seq=35 ttl=127 time=0.695 ms
+64 bytes from 172.31.8.246: icmp_seq=36 ttl=127 time=0.806 ms
+64 bytes from 172.31.8.246: icmp_seq=37 ttl=127 time=0.623 ms
+64 bytes from 172.31.8.246: icmp_seq=38 ttl=127 time=0.854 ms
+64 bytes from 172.31.8.246: icmp_seq=39 ttl=127 time=0.595 ms
+64 bytes from 172.31.8.246: icmp_seq=40 ttl=127 time=0.808 ms
+64 bytes from 172.31.8.246: icmp_seq=41 ttl=127 time=0.600 ms
+64 bytes from 172.31.8.246: icmp_seq=42 ttl=127 time=1.07 ms
+64 bytes from 172.31.8.246: icmp_seq=43 ttl=127 time=0.570 ms
+64 bytes from 172.31.8.246: icmp_seq=44 ttl=127 time=0.673 ms
+64 bytes from 172.31.8.246: icmp_seq=45 ttl=127 time=1.46 ms
+64 bytes from 172.31.8.246: icmp_seq=46 ttl=127 time=1.05 ms
+64 bytes from 172.31.8.246: icmp_seq=47 ttl=127 time=1.24 ms
+64 bytes from 172.31.8.246: icmp_seq=48 ttl=127 time=0.682 ms
+64 bytes from 172.31.8.246: icmp_seq=49 ttl=127 time=0.752 ms
+64 bytes from 172.31.8.246: icmp_seq=50 ttl=127 time=0.791 ms
+64 bytes from 172.31.8.246: icmp_seq=51 ttl=127 time=0.904 ms
+64 bytes from 172.31.8.246: icmp_seq=52 ttl=127 time=0.648 ms
+64 bytes from 172.31.8.246: icmp_seq=53 ttl=127 time=0.737 ms
+64 bytes from 172.31.8.246: icmp_seq=54 ttl=127 time=0.695 ms
+64 bytes from 172.31.8.246: icmp_seq=55 ttl=127 time=0.771 ms
+64 bytes from 172.31.8.246: icmp_seq=56 ttl=127 time=0.709 ms
+64 bytes from 172.31.8.246: icmp_seq=57 ttl=127 time=0.802 ms
+64 bytes from 172.31.8.246: icmp_seq=58 ttl=127 time=0.377 ms
+64 bytes from 172.31.8.246: icmp_seq=59 ttl=127 time=1.29 ms
+64 bytes from 172.31.8.246: icmp_seq=60 ttl=127 time=0.968 ms
+64 bytes from 172.31.8.246: icmp_seq=61 ttl=127 time=1.00 ms
+64 bytes from 172.31.8.246: icmp_seq=62 ttl=127 time=0.640 ms
+64 bytes from 172.31.8.246: icmp_seq=63 ttl=127 time=0.653 ms
+64 bytes from 172.31.8.246: icmp_seq=64 ttl=127 time=0.778 ms
+64 bytes from 172.31.8.246: icmp_seq=65 ttl=127 time=0.714 ms
+64 bytes from 172.31.8.246: icmp_seq=66 ttl=127 time=0.672 ms
+64 bytes from 172.31.8.246: icmp_seq=67 ttl=127 time=0.552 ms
+64 bytes from 172.31.8.246: icmp_seq=68 ttl=127 time=0.706 ms
+64 bytes from 172.31.8.246: icmp_seq=69 ttl=127 time=0.850 ms
+64 bytes from 172.31.8.246: icmp_seq=70 ttl=127 time=1.04 ms
+64 bytes from 172.31.8.246: icmp_seq=71 ttl=127 time=0.718 ms
+64 bytes from 172.31.8.246: icmp_seq=72 ttl=127 time=0.943 ms
+64 bytes from 172.31.8.246: icmp_seq=73 ttl=127 time=0.983 ms
+64 bytes from 172.31.8.246: icmp_seq=74 ttl=127 time=1.44 ms
+64 bytes from 172.31.8.246: icmp_seq=75 ttl=127 time=0.797 ms
+64 bytes from 172.31.8.246: icmp_seq=76 ttl=127 time=1.25 ms
+64 bytes from 172.31.8.246: icmp_seq=77 ttl=127 time=1.06 ms
+64 bytes from 172.31.8.246: icmp_seq=78 ttl=127 time=0.583 ms
+64 bytes from 172.31.8.246: icmp_seq=79 ttl=127 time=0.772 ms
+64 bytes from 172.31.8.246: icmp_seq=80 ttl=127 time=1.06 ms
+64 bytes from 172.31.8.246: icmp_seq=81 ttl=127 time=0.555 ms
+64 bytes from 172.31.8.246: icmp_seq=82 ttl=127 time=0.594 ms
+64 bytes from 172.31.8.246: icmp_seq=83 ttl=127 time=0.954 ms
+64 bytes from 172.31.8.246: icmp_seq=84 ttl=127 time=0.429 ms
+64 bytes from 172.31.8.246: icmp_seq=85 ttl=127 time=0.911 ms
+64 bytes from 172.31.8.246: icmp_seq=86 ttl=127 time=0.518 ms
+64 bytes from 172.31.8.246: icmp_seq=87 ttl=127 time=0.657 ms
+64 bytes from 172.31.8.246: icmp_seq=88 ttl=127 time=1.19 ms
+64 bytes from 172.31.8.246: icmp_seq=89 ttl=127 time=0.635 ms
+64 bytes from 172.31.8.246: icmp_seq=90 ttl=127 time=0.989 ms
+
+C:\Users\10748090\Downloads>ssh -i "git-server-key.pem" ec2-user@ec2-18-189-145-227.us-east-2.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Thu Aug 29 06:55:50 2024 from 136.226.233.31
+[ec2-user@node1 ~]$ sudo su -
+Last login: Thu Aug 29 06:55:53 UTC 2024 on pts/5
+[root@node1 ~]# ll
+total 0
+[root@node1 ~]# ls
+[root@node1 ~]# cd /dev-one/
+[root@node1 dev-one]# ls
+index.html
+[root@node1 dev-one]# ll
+total 4
+-rw-r--r--. 1 root root 37 Aug 29 07:06 index.html
+[root@node1 dev-one]# git remote add origin root
+[root@node1 dev-one]# git remote add origin root@172.31.8.246/project-x
+error: remote origin already exists.
+[root@node1 dev-one]# git remote add origin root@172.31.8.246/project-x
+error: remote origin already exists.
+[root@node1 dev-one]# git remote add origin root@172.31.8.246:/project-x
+error: remote origin already exists.
+[root@node1 dev-one]# git remote add origin root@172.31.8.246:/project-x
+error: remote origin already exists.
+[root@node1 dev-one]# git remote remove origin root@172.31.8.246:/project-x
+usage: git remote remove <name>
+
+[root@node1 dev-one]# git remote add origin root@172.31.8.246:/project-x
+error: remote origin already exists.
+[root@node1 dev-one]# git remote remove origin root@172.31.8.246:/project-x
+usage: git remote remove <name>
+
+[root@node1 dev-one]# git remote remove origin root@172.31.8.246:/project-x
+usage: git remote remove <name>
+
+[root@node1 dev-one]# git remote -v
+origin  root (fetch)
+origin  root (push)
+[root@node1 dev-one]# git remote add origin root@172.31.8.246:/project-x
+error: remote origin already exists.
+[root@node1 dev-one]# l.
+.git
+[root@node1 dev-one]# ll
+total 4
+-rw-r--r--. 1 root root 37 Aug 29 07:06 index.html
+[root@node1 dev-one]# rm -rf .git/
+[root@node1 dev-one]# ll
+total 4
+-rw-r--r--. 1 root root 37 Aug 29 07:06 index.html
+[root@node1 dev-one]# git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+Initialized empty Git repository in /dev-one/.git/
+[root@node1 dev-one]# git remote add origin root@172.31.8.246:/project-x
+[root@node1 dev-one]# git remote -v
+origin  root@172.31.8.246:/project-x (fetch)
+origin  root@172.31.8.246:/project-x (push)
+[root@node1 dev-one]# git push origin master
+error: src refspec master does not match any
+error: failed to push some refs to '172.31.8.246:/project-x'
+[root@node1 dev-one]# git push origin master
+error: src refspec master does not match any
+error: failed to push some refs to '172.31.8.246:/project-x'
+[root@node1 dev-one]# vim index.html
+[root@node1 dev-one]# git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        index.html
+
+nothing added to commit but untracked files present (use "git add" to track)
+[root@node1 dev-one]# git add index.html
+[root@node1 dev-one]# git commit -m "second add" index.html
+[master (root-commit) dad2e92] second add
+ Committer: root <root@node1.example.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 5 insertions(+)
+ create mode 100644 index.html
+[root@node1 dev-one]# git log
+commit dad2e9207e354433963a0205e5fbb942b0a8fb8f (HEAD -> master)
+Author: root <root@node1.example.com>
+Date:   Thu Aug 29 09:12:54 2024 +0000
+
+    second add
+[root@node1 dev-one]# git push origin master
+The authenticity of host '172.31.8.246 (172.31.8.246)' can't be established.
+ED25519 key fingerprint is SHA256:KUZ66BOfPglCtLBOmpCff8p1QJSmKdchok0gG1+eIp0.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '172.31.8.246' (ED25519) to the list of known hosts.
+root@172.31.8.246's password:
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 257 bytes | 257.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To 172.31.8.246:/project-x
+ * [new branch]      master -> master
+[root@node1 dev-one]# ll
+total 4
+-rw-r--r--. 1 root root 62 Aug 29 09:11 index.html
+[root@node1 dev-one]# cat
+.git/       index.html
+[root@node1 dev-one]# cat index.html
+
+ demo hello world
+ demo vivek nere
+ namaskar
+ hello world`
+[root@node1 dev-one]# git pull origin master
+root@172.31.8.246's password:
+From 172.31.8.246:/project-x
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+[root@node1 dev-one]# client_loop: send disconnect: Connection reset
+
+C:\Users\10748090\Downloads>ssh -i "git-server-key.pem" ec2-user@ec2-18-189-145-227.us-east-2.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Thu Aug 29 08:45:51 2024 from 136.226.233.13
+[ec2-user@node1 ~]$ sudo su -
+Last login: Thu Aug 29 08:45:55 UTC 2024 on pts/1
+[root@node1 ~]# cd dev-one
+-bash: cd: dev-one: No such file or directory
+[root@node1 ~]# cd /dev-one
+[root@node1 dev-one]# ll
+total 4
+-rw-r--r--. 1 root root 62 Aug 29 09:11 index.html
+[root@node1 dev-one]# git pull origin master index.html
+root@172.31.8.246's password:
+fatal: couldn't find remote ref index.html
+[root@node1 dev-one]# fatal: the remote end hung up unexpectedly
+git pull origin masterbash
+[root@node1 dev-one]# git pull origin master
+root@172.31.8.246's password:
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 301 bytes | 301.00 KiB/s, done.
+From 172.31.8.246:/project-x
+ * branch            master     -> FETCH_HEAD
+   dad2e92..3624d72  master     -> origin/master
+Updating dad2e92..3624d72
+Fast-forward
+ index.html | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+[root@node1 dev-one]# vim index.html
+                                                                                                         ^Z
+
+[1]+  Stopped                 vim index.html
+[root@node1 dev-one]#

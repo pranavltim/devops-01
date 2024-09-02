@@ -1,0 +1,347 @@
+Microsoft Windows [Version 10.0.22631.4037]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\10748090>cd Downloads
+
+C:\Users\10748090\Downloads>ssh -i "git-server-key.pem" ec2-user@ec2-18-216-202-153.us-east-2.compute.amazonaws.com
+The authenticity of host 'ec2-18-216-202-153.us-east-2.compute.amazonaws.com (18.216.202.153)' can't be established.
+ED25519 key fingerprint is SHA256:uvA5Yrze5oxXniTzqpND7vPQvomK6m6pKn8jBu1r80k.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'ec2-18-216-202-153.us-east-2.compute.amazonaws.com' (ED25519) to the list of known hosts.
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-22-156 ~]$ sudo su -
+[root@ip-172-31-22-156 ~]#
+[root@ip-172-31-22-156 ~]# hostnamectl set-hostname node2.example.com
+[root@ip-172-31-22-156 ~]# bash
+[root@node2 ~]# yum install git
+Last metadata expiration check: 0:07:34 ago on Thu Aug 29 05:26:23 2024.
+Dependencies resolved.
+=====================================================================================================================================
+ Package                          Architecture           Version                                   Repository                   Size
+=====================================================================================================================================
+Installing:
+ git                              x86_64                 2.40.1-1.amzn2023.0.3                     amazonlinux                  54 k
+Installing dependencies:
+ git-core                         x86_64                 2.40.1-1.amzn2023.0.3                     amazonlinux                 4.3 M
+ git-core-doc                     noarch                 2.40.1-1.amzn2023.0.3                     amazonlinux                 2.6 M
+ perl-Error                       noarch                 1:0.17029-5.amzn2023.0.2                  amazonlinux                  41 k
+ perl-File-Find                   noarch                 1.37-477.amzn2023.0.6                     amazonlinux                  26 k
+ perl-Git                         noarch                 2.40.1-1.amzn2023.0.3                     amazonlinux                  42 k
+ perl-TermReadKey                 x86_64                 2.38-9.amzn2023.0.2                       amazonlinux                  36 k
+ perl-lib                         x86_64                 0.65-477.amzn2023.0.6                     amazonlinux                  15 k
+
+Transaction Summary
+=====================================================================================================================================
+Install  8 Packages
+
+Total download size: 7.1 M
+Installed size: 34 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/8): git-2.40.1-1.amzn2023.0.3.x86_64.rpm                                                          825 kB/s |  54 kB     00:00
+(2/8): perl-Error-0.17029-5.amzn2023.0.2.noarch.rpm                                                  2.3 MB/s |  41 kB     00:00
+(3/8): perl-File-Find-1.37-477.amzn2023.0.6.noarch.rpm                                               1.5 MB/s |  26 kB     00:00
+(4/8): git-core-doc-2.40.1-1.amzn2023.0.3.noarch.rpm                                                  22 MB/s | 2.6 MB     00:00
+(5/8): perl-Git-2.40.1-1.amzn2023.0.3.noarch.rpm                                                     1.8 MB/s |  42 kB     00:00
+(6/8): git-core-2.40.1-1.amzn2023.0.3.x86_64.rpm                                                      28 MB/s | 4.3 MB     00:00
+(7/8): perl-TermReadKey-2.38-9.amzn2023.0.2.x86_64.rpm                                               1.1 MB/s |  36 kB     00:00
+(8/8): perl-lib-0.65-477.amzn2023.0.6.x86_64.rpm                                                     469 kB/s |  15 kB     00:00
+-------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                 34 MB/s | 7.1 MB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                             1/1
+  Installing       : git-core-2.40.1-1.amzn2023.0.3.x86_64                                                                       1/8
+  Installing       : git-core-doc-2.40.1-1.amzn2023.0.3.noarch                                                                   2/8
+  Installing       : perl-lib-0.65-477.amzn2023.0.6.x86_64                                                                       3/8
+  Installing       : perl-TermReadKey-2.38-9.amzn2023.0.2.x86_64                                                                 4/8
+  Installing       : perl-File-Find-1.37-477.amzn2023.0.6.noarch                                                                 5/8
+  Installing       : perl-Error-1:0.17029-5.amzn2023.0.2.noarch                                                                  6/8
+  Installing       : perl-Git-2.40.1-1.amzn2023.0.3.noarch                                                                       7/8
+  Installing       : git-2.40.1-1.amzn2023.0.3.x86_64                                                                            8/8
+  Running scriptlet: git-2.40.1-1.amzn2023.0.3.x86_64                                                                            8/8
+  Verifying        : git-2.40.1-1.amzn2023.0.3.x86_64                                                                            1/8
+  Verifying        : git-core-2.40.1-1.amzn2023.0.3.x86_64                                                                       2/8
+  Verifying        : git-core-doc-2.40.1-1.amzn2023.0.3.noarch                                                                   3/8
+  Verifying        : perl-Error-1:0.17029-5.amzn2023.0.2.noarch                                                                  4/8
+  Verifying        : perl-File-Find-1.37-477.amzn2023.0.6.noarch                                                                 5/8
+  Verifying        : perl-Git-2.40.1-1.amzn2023.0.3.noarch                                                                       6/8
+  Verifying        : perl-TermReadKey-2.38-9.amzn2023.0.2.x86_64                                                                 7/8
+  Verifying        : perl-lib-0.65-477.amzn2023.0.6.x86_64                                                                       8/8
+
+Installed:
+  git-2.40.1-1.amzn2023.0.3.x86_64            git-core-2.40.1-1.amzn2023.0.3.x86_64       git-core-doc-2.40.1-1.amzn2023.0.3.noarch
+  perl-Error-1:0.17029-5.amzn2023.0.2.noarch  perl-File-Find-1.37-477.amzn2023.0.6.noarch perl-Git-2.40.1-1.amzn2023.0.3.noarch
+  perl-TermReadKey-2.38-9.amzn2023.0.2.x86_64 perl-lib-0.65-477.amzn2023.0.6.x86_64
+
+Complete!
+[root@node2 ~]# client_loop: send disconnect: Connection reset
+
+C:\Users\10748090\Downloads>ssh -i "git-server-key.pem" ec2-user@ec2-18-216-202-153.us-east-2.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Thu Aug 29 05:33:09 2024 from 165.225.120.230
+[ec2-user@node2 ~]$ sudo su
+[root@node2 ec2-user]# mkdir /dev-two
+[root@node2 ec2-user]# cd /dev-two/
+[root@node2 dev-two]# gti init
+bash: gti: command not found
+[root@node2 dev-two]# git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+Initialized empty Git repository in /dev-two/.git/
+[root@node2 dev-two]# ls -a
+.  ..  .git
+[root@node2 dev-two]# pwd
+/dev-two
+[root@node2 dev-two]# client_loop: send disconnect: Connection reset
+
+C:\Users\10748090\Downloads>ssh -i "git-server-key.pem" ec2-user@ec2-18-216-202-153.us-east-2.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Thu Aug 29 06:08:30 2024 from 136.226.233.31
+[ec2-user@node2 ~]$ sudo su -
+Last login: Thu Aug 29 06:08:35 UTC 2024 on pts/3
+[root@node2 ~]# ping 172.31.8.246
+PING 172.31.8.246 (172.31.8.246) 56(84) bytes of data.
+64 bytes from 172.31.8.246: icmp_seq=1 ttl=127 time=2.45 ms
+64 bytes from 172.31.8.246: icmp_seq=2 ttl=127 time=1.07 ms
+64 bytes from 172.31.8.246: icmp_seq=3 ttl=127 time=1.44 ms
+64 bytes from 172.31.8.246: icmp_seq=4 ttl=127 time=1.26 ms
+64 bytes from 172.31.8.246: icmp_seq=5 ttl=127 time=1.14 ms
+64 bytes from 172.31.8.246: icmp_seq=6 ttl=127 time=1.53 ms
+
+^Z
+[1]+  Stopped                 ping 172.31.8.246
+[root@node2 ~]# ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): cd .ssh/
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Saving key "cd .ssh/" failed: Is a directory
+[root@node2 ~]#
+[root@node2 ~]#
+[root@node2 ~]#
+[root@node2 ~]#
+[root@node2 ~]# cd .ssh
+[root@node2 .ssh]# ls a
+ls: cannot access 'a': No such file or directory
+[root@node2 .ssh]# ls -a
+.  ..  authorized_keys
+[root@node2 .ssh]# cat authorized_keys
+no-port-forwarding,no-agent-forwarding,no-X11-forwarding,command="echo 'Please login as the user \"ec2-user\" rather than the user \"root\".';echo;sleep 10;exit 142" ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCIEJ3PlzKPtZAuC16DMiGKViAxz5NQsrYBakC90aUA+/tRxKWpcmkJPqoIAYrUsU9TUY6aXgho4d07iqjnyWxrLswFvMSowLoI82fVEdewA/bkQODrf+OBB+0miawV5u/9upWjg2pUQ4sZk3h/jaKhIv/7o5zq5kn1SVk5LGUSLF2PuodxiPf5b8G3JrR2Z2fXd/15Q1/tdG1VDBn6OBnITnkgVsI+MsmODqTRA3fIEh+ceXMlZ0NGn63EFAdj/JEtPy8AzjTuVgDu2+iXDMLv7EaE4k21bIzvEawQ+fcCVvC6kmy9+YWreYtSjSEMQo1N0VS3rr4wlzAwZ23HJt6z git-server-key
+[root@node2 .ssh]# cd
+[root@node2 ~]# ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /root/.ssh/id_rsa
+Your public key has been saved in /root/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:RBtxXd7rUUKy7rwjdloywiNJ2c1HsLyB2Qf9/F7TNJU root@node2.example.com
+The key's randomart image is:
++---[RSA 3072]----+
+|        +.+o..o .|
+|       . O +o= E.|
+|        = = +oo +|
+|       + o *  oo+|
+|      o S + o  =o|
+|     . o   +  ..=|
+|      o + o +  oo|
+|       . oo+o.  .|
+|         ..+..   |
++----[SHA256]-----+
+[root@node2 ~]# ssh-copy-id @172.31.8.246
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/root/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+
+/usr/bin/ssh-copy-id: ERROR: usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]
+ERROR:            [-b bind_address] [-c cipher_spec] [-D [bind_address:]port]
+ERROR:            [-E log_file] [-e escape_char] [-F configfile] [-I pkcs11]
+ERROR:            [-i identity_file] [-J [user@]host[:port]] [-L address]
+ERROR:            [-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-p port]
+ERROR:            [-Q query_option] [-R address] [-S ctl_path] [-W host:port]
+ERROR:            [-w local_tun[:remote_tun]] destination [command]
+
+[root@node2 ~]# ssh-copy-id root@172.31.8.246
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/root/.ssh/id_rsa.pub"
+The authenticity of host '172.31.8.246 (172.31.8.246)' can't be established.
+ED25519 key fingerprint is SHA256:KUZ66BOfPglCtLBOmpCff8p1QJSmKdchok0gG1+eIp0.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+root@172.31.8.246's password:
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'root@172.31.8.246'"
+and check to make sure that only the key(s) you wanted were added.
+
+[root@node2 ~]# client_loop: send disconnect: Connection reset
+
+C:\Users\10748090\Downloads>ssh -i "git-server-key.pem" ec2-user@ec2-18-216-202-153.us-east-2.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Thu Aug 29 07:19:55 2024 from 136.226.233.31
+[ec2-user@node2 ~]$ cat authorized_keys
+cat: authorized_keys: No such file or directory
+[ec2-user@node2 ~]$ sudo su -
+Last login: Thu Aug 29 07:19:59 UTC 2024 on pts/5
+[root@node2 ~]# authorized_keys
+-bash: authorized_keys: command not found
+[root@node2 ~]# cat authorized_keys
+cat: authorized_keys: No such file or directory
+[root@node2 ~]# client_loop: send disconnect: Connection reset
+
+C:\Users\10748090\Downloads>ssh -i "git-server-key.pem" ec2-user@ec2-18-216-202-153.us-east-2.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Thu Aug 29 08:32:55 2024 from 136.226.233.13
+[ec2-user@node2 ~]$ sudo su -
+Last login: Thu Aug 29 08:33:18 UTC 2024 on pts/1
+[root@node2 ~]# client_loop: send disconnect: Connection reset
+
+C:\Users\10748090\Downloads>ssh -i "git-server-key.pem" ec2-user@ec2-18-216-202-153.us-east-2.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Thu Aug 29 08:45:37 2024 from 136.226.233.13
+[ec2-user@node2 ~]$ sudo su -
+Last login: Thu Aug 29 08:45:42 UTC 2024 on pts/3
+[root@node2 ~]# ls a
+ls: cannot access 'a': No such file or directory
+[root@node2 ~]# ls -l
+total 0
+[root@node2 ~]# ll
+total 0
+[root@node2 ~]# cd /dev-two
+[root@node2 dev-two]# ll
+total 0
+[root@node2 dev-two]# cd
+[root@node2 ~]# ll
+total 0
+[root@node2 ~]# cd /dev-two
+[root@node2 dev-two]# ll
+total 0
+[root@node2 dev-two]# git clone root@172.31.7.68:/project-x
+Cloning into 'project-x'...
+
+
+^Z
+[1]+  Stopped                 git clone root@172.31.7.68:/project-x
+[root@node2 dev-two]# git clone root@172.31.7.68:/project-x
+fatal: destination path 'project-x' already exists and is not an empty directory.
+[root@node2 dev-two]# ll
+total 0
+drwxr-xr-x. 3 root root 18 Aug 29 09:22 project-x
+[root@node2 dev-two]# rm -rf project-x
+[root@node2 dev-two]# git clone root@172.31.7.68:/project-x
+Cloning into 'project-x'...
+ssh: connect to host 172.31.7.68 port 22: Connection timed out
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[root@node2 dev-two]# git clone root@172.31.8.246:/project-x
+Cloning into 'project-x'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+[root@node2 dev-two]# ll
+total 0
+drwxr-xr-x. 3 root root 36 Aug 29 09:33 project-x
+[root@node2 dev-two]# cd project-x/
+[root@node2 project-x]# ll
+total 4
+-rw-r--r--. 1 root root 62 Aug 29 09:33 index.html
+[root@node2 project-x]# vim index.html
+[root@node2 project-x]# git add index.html
+[root@node2 project-x]# git commit -m "chnages done by developer 2" index.html
+[master 3624d72] chnages done by developer 2
+ Committer: root <root@node2.example.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+[root@node2 project-x]# git push origin master
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 321 bytes | 321.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To 172.31.8.246:/project-x
+   dad2e92..3624d72  master -> master
+[root@node2 project-x]#

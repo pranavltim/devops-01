@@ -1,0 +1,27 @@
+yum update -y
+  
+free -h  {for RAM}
+
+cat /proc/maininfo
+
+rpmquery Jenkins
+
+yum repolist
+
+
+    1  passwd
+    2  rpmquery Jenkins
+    3  dnf install java-17-amazon-corretto -y
+    4  java -version
+    5  wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/redhat-stable/jenkins.repo
+    6  rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+    7  dnf install jenkins -y
+    8  systemctl enable jenkins
+    9  systemctl start jenkins
+   10  systemctl status jenkins
+   11  history
+
+
+Jenkin Token 1 : - 1189328d913e2e2831878a422a59ce1223
+
+Jenkin Token 2 :-  1179ad09d63c1f8b8adc19e3bdc07e8ba1

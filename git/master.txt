@@ -1,0 +1,137 @@
+#How to Install and Configure Jenkins on Amazon Linux 2023
+ 
+1)dnf update
+2)dnf install java-17-amazon-corretto -y
+3)java -version
+4)wget -O /etc/yum.repos.d/jenkins.repo \
+https://pkg.jenkins.io/redhat-stable/jenkins.repo
+5)rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+6)dnf install jenkins -y
+7)systemctl enable Jenkins
+8)systemctl start Jenkins
+9)Now, open your web browser and access Jenkins by navigating to:
+http://your_amazon_linux_instance_ip:8080
+10)cat /var/lib/jenkins/secrets/initialAdminPassword
+------------------------------------------------------
+ 
+ 
+#Installation and configuration of maven
+1)ct /opt
+2)wget https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz
+3)ls
+4)tar -xzvf apache-maven-3.9
+5)mv apache-maven-3.9.9 maven
+6)cd /bin
+7)./mvn -v
+8)cd ..
+9)cd ~
+10)pwd
+11)ll -a
+12)vim .bash-profile
+(below the fi
+M2_HOME =/opt/maven
+M2=/opt/maven/bin
+JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+then save all changes
+)
+13)echo $PATH
+14)source .bash-profile
+15)echo $PATH
+ 
+#Install maven plugins and configure Jenkins for maven
+in Jenkins -> manage Jenkins -> plugins -> available plugins -> install maven integration
+now we need to configure this plugins for that go to manage Jenkins
+tools-> add JDK -> name=java11  JAVA_HOME=/usr/lib/jvm/java/usr/lib/jvm/java-17-openjdk
+then add maven ==> name=maven , MAVEN_HOME= /opt/maven
+ 
+now manage Jenkins -> plugins -> Intsalled plugins -> Disable the GITHUB branch source plugins & enable GitHub plugin and restart
+install git in Jenkins server if not installed already
+-----------------------------------------------
+In Dev-server
+1)clone the source code folder from repo (git clone gttpsurl)
+2)then checkout to our preffered branch
+3)then cd (folder which we have clone) 
+4)git remote remove origin
+5)git remote add origin (ssh_url)
+6)git push origin main --force
+ 
+ 
+=============================================================================================
+#Tomcat Installation
+1)dnf install java-17-amazon-corretto -y
+2)java --version
+3) from https://tomcat.apache.org/download-90.cgi this link cpoy core tar.gz file
+4)pwd   should need to be root
+5) cd /opt
+6)wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.93/bin/apache-tomcat-9.0.93.tar.gz
+7)ls
+8)tar xvzf apache-tomcat-9.0.93.tar.gz
+9)mv apache-tomcat-9.0.93 tomcat
+10)cd tomcat
+11)cd bin
+12)./startup.sh (now because of this file tomcat been start in our server)
+13)in google open http://(ip of tomcat server instance):8080
+14)now we have make some changes in context.xml file for that we need to find that file in tomcat 
+[root@tomcat-server bin]# cd ..
+[root@tomcat-server tomcat]# find / -name context.xml
+/opt/tomcat/conf/context.xml
+/opt/tomcat/webapps/docs/META-INF/context.xml
+ 
+/opt/tomcat/webapps/examples/META-INF/context.xml
+/opt/tomcat/webapps/host-manager/META-INF/context.xml
+/opt/tomcat/webapps/manager/META-INF/context.xml
+from above we need to edit below files:
+/opt/tomcat/webapps/host-manager/META-INF/context.xml
+/opt/tomcat/webapps/manager/META-INF/context.xml
+ 
+ 
+#comment value tag sections in below all files
+[root@tomcat-server bin]# vim /opt/tomcat/webapps/examples/META-INF/context.xml
+[root@tomcat-server bin]# vim /opt/tomcat/webapps/host-manager/META-INF/context.xml
+[root@tomcat-server bin]# vin /opt/tomcat/webapps/manager/META-INF/context.xml
+<!--  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+          allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />  --!>
+ 
+ 
+ 
+[root@tomcat-server bin]# cd ..
+[root@tomcat-server tomcat]# cd conf/
+[root@tomcat-server conf]# vim tomcat-users.xml
+ 
+add the following info in tomcat-users.xml at the end
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="manager-status"/>   
+<user username="admin" password="admin" roles="manager-gui,manager-script,manager-jmx,manager-status"/>
+<user username="deployer" password="deployer" roles="manager-script"/>
+<user username="tomcat" password="s3cret" roles="manager-gui"/>
+ 
+ 
+ 
+now we need to reboot the tomcat server
+cd bin/
+./shutdown.sh
+./startup.sh
+ 
+ 
+======================================================================================
+ 
+Integrating tomcat server with Jenkins:
+ 
+there is no predefined tomcat plugin in Jenkins so we need to install "deploy to container plugin"
+then configure the tomcat server with credentials
+ 
+manage genkins -> plugins -> available plugins -> deploy to container
+ 
+now we need to add credentials of tomcat to the Jenkins
+manage Jenkins -> credentials -> system -> global credentials -> add credentials(<user username="deployer" password="deployer" roles="manager-script"/>) id and description=tomcat-credentials
+ 
+then go to dashboard and create new item name as BuildAndDeployToTomcat  as a maven project
+add git repository http url
+make branch main
+and at the last  click on "Add post-build action" and select "Deploy war/ear to a container"
+in war/ear file add "**/*.war"
+add container Tomcat 8.x
+add tomcat-server instance url 
+save and apply

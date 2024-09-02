@@ -1,0 +1,11 @@
+1. Cloud computing is the collection of resources.
+
+SLA : -
+
+
+SCALING : - 
+
+
+aws : - autoscaling
+
+azure : - VMSS => virtual machine scale set

@@ -1,0 +1,69 @@
+CASE SENSITIVE SPACE SENSITIVE
+
+Commands :
+
+	su - pranav
+	vim /etc/sudoers
+	whereis passwd
+	sudo useradd user3
+	sudo passwd user3
+	visudo 
+
+
+
+Permissions:
+		
+u - user
+G - group
+o - other
+
+drwx        r-x            r-x.  2    root root   timestamp
+
+ u          G              o
+
+
+
++  =>  apply permission
+-  => revoke permission
+r  =>  read  = 4(numeric value)
+w  => write  = 2(numeric value)
+x => execute = 1(numeric value)
+
+No permission = 0(numeric value)
+
+
+for dir. 777
+for file 666
+
+
+
+chmod = change modification
+
+ syntax =>
+	chmod permission <resource name>
+
+chown <owner> <resource name> => change owner
+ 
+chgrp <group name> <resource name>  => change group
+
+Stickybit : always apply on folder , root will apply it (user won't be able to delete other user's resources)
+
+	IT ALWAYS APPLIED ON OTHER(O) LIKE {o + t} 
+	Command : chmod o+t <resource name>
+
+SGIDbit : it is only applied on groups
+SUID  : it is only applicable on executable files
+
+umask : default value 0022 
+
+
+
+command :
+ 	systemctl status sshd     => to check the status of the service
+	systemctl stop sshd       => to stop the service(after reboot it will be active again)
+	systemctl disable sshd    => to permanently stop the service (after reboot it will remain inactive)
+	systemctl start sshd      => to start the service (after reboot it will remain inactive)
+	systemctl enable sshd     => to start the service permanently (after reboot it will remain active)
+	systemctl restart sshd    => to restart the service
+	systemctl reload-or-restart sshd.service => Machine will decide to reload or restart.
+	
