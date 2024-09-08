@@ -1,0 +1,310 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\10747889> cd .\Downloads\
+PS C:\Users\10747889\Downloads> ssh -i "test1-key.pem" ec2-user@ec2-3-110-175-23.ap-south-1.compute.amazonaws.com
+The authenticity of host 'ec2-3-110-175-23.ap-south-1.compute.amazonaws.com (3.110.175.23)' can't be established.
+ED25519 key fingerprint is SHA256:Bux0bF9q3vIMTEq2V4A83ocW+6s3bnPCRcNQi8h5iOg.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'ec2-3-110-175-23.ap-south-1.compute.amazonaws.com' (ED25519) to the list of known hosts.
+Register this system with Red Hat Insights: insights-client --register
+Create an account or view all your systems at https://red.ht/insights-dashboard
+[ec2-user@ip-172-31-11-168 ~]$ sudo su -
+[root@ip-172-31-11-168 ~]# hostnamectl set-hostname redhatS.example.com
+[root@ip-172-31-11-168 ~]# bash
+[root@redhatS ~]# yum install nfs-utils
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use "rhc" or "subscription-manager" to register.
+
+Red Hat Enterprise Linux 9 for x86_64 - AppStream from RHUI (RPMs)                                    60 MB/s |  40 MB     00:00
+Red Hat Enterprise Linux 9 for x86_64 - BaseOS from RHUI (RPMs)                                       60 MB/s |  30 MB     00:00
+Red Hat Enterprise Linux 9 Client Configuration                                                       39 kB/s | 3.0 kB     00:00
+Dependencies resolved.
+=====================================================================================================================================
+ Package                       Architecture          Version                            Repository                              Size
+=====================================================================================================================================
+Installing:
+ nfs-utils                     x86_64                1:2.5.4-26.el9_4                   rhel-9-baseos-rhui-rpms                462 k
+Installing dependencies:
+ gssproxy                      x86_64                0.8.4-6.el9                        rhel-9-baseos-rhui-rpms                114 k
+ keyutils                      x86_64                1.6.3-1.el9                        rhel-9-baseos-rhui-rpms                 78 k
+ libev                         x86_64                4.33-5.el9                         rhel-9-baseos-rhui-rpms                 56 k
+ libnfsidmap                   x86_64                1:2.5.4-26.el9_4                   rhel-9-baseos-rhui-rpms                 65 k
+ libtirpc                      x86_64                1.3.3-8.el9_4                      rhel-9-baseos-rhui-rpms                 96 k
+ libverto-libev                x86_64                0.3.2-3.el9                        rhel-9-baseos-rhui-rpms                 15 k
+ quota                         x86_64                1:4.06-6.el9                       rhel-9-baseos-rhui-rpms                202 k
+ quota-nls                     noarch                1:4.06-6.el9                       rhel-9-baseos-rhui-rpms                 81 k
+ rpcbind                       x86_64                1.2.6-7.el9                        rhel-9-baseos-rhui-rpms                 62 k
+ sssd-nfs-idmap                x86_64                2.9.4-6.el9_4                      rhel-9-baseos-rhui-rpms                 46 k
+
+Transaction Summary
+=====================================================================================================================================
+Install  11 Packages
+
+Total download size: 1.2 M
+Installed size: 3.2 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/11): libverto-libev-0.3.2-3.el9.x86_64.rpm                                                        334 kB/s |  15 kB     00:00
+(2/11): libev-4.33-5.el9.x86_64.rpm                                                                  1.1 MB/s |  56 kB     00:00
+(3/11): quota-4.06-6.el9.x86_64.rpm                                                                  3.7 MB/s | 202 kB     00:00
+(4/11): quota-nls-4.06-6.el9.noarch.rpm                                                              6.2 MB/s |  81 kB     00:00
+(5/11): keyutils-1.6.3-1.el9.x86_64.rpm                                                              6.1 MB/s |  78 kB     00:00
+(6/11): gssproxy-0.8.4-6.el9.x86_64.rpm                                                              9.6 MB/s | 114 kB     00:00
+(7/11): libtirpc-1.3.3-8.el9_4.x86_64.rpm                                                            7.8 MB/s |  96 kB     00:00
+(8/11): rpcbind-1.2.6-7.el9.x86_64.rpm                                                               5.2 MB/s |  62 kB     00:00
+(9/11): sssd-nfs-idmap-2.9.4-6.el9_4.x86_64.rpm                                                      3.8 MB/s |  46 kB     00:00
+(10/11): libnfsidmap-2.5.4-26.el9_4.x86_64.rpm                                                       5.9 MB/s |  65 kB     00:00
+(11/11): nfs-utils-2.5.4-26.el9_4.x86_64.rpm                                                          30 MB/s | 462 kB     00:00
+-------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                 11 MB/s | 1.2 MB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                             1/1
+  Installing       : libtirpc-1.3.3-8.el9_4.x86_64                                                                              1/11
+  Installing       : libnfsidmap-1:2.5.4-26.el9_4.x86_64                                                                        2/11
+  Running scriptlet: rpcbind-1.2.6-7.el9.x86_64                                                                                 3/11
+  Installing       : rpcbind-1.2.6-7.el9.x86_64                                                                                 3/11
+  Running scriptlet: rpcbind-1.2.6-7.el9.x86_64                                                                                 3/11
+Created symlink /etc/systemd/system/multi-user.target.wants/rpcbind.service → /usr/lib/systemd/system/rpcbind.service.
+Created symlink /etc/systemd/system/sockets.target.wants/rpcbind.socket → /usr/lib/systemd/system/rpcbind.socket.
+
+  Installing       : keyutils-1.6.3-1.el9.x86_64                                                                                4/11
+  Installing       : quota-nls-1:4.06-6.el9.noarch                                                                              5/11
+  Installing       : quota-1:4.06-6.el9.x86_64                                                                                  6/11
+  Installing       : libev-4.33-5.el9.x86_64                                                                                    7/11
+  Installing       : libverto-libev-0.3.2-3.el9.x86_64                                                                          8/11
+  Installing       : gssproxy-0.8.4-6.el9.x86_64                                                                                9/11
+  Running scriptlet: gssproxy-0.8.4-6.el9.x86_64                                                                                9/11
+  Running scriptlet: nfs-utils-1:2.5.4-26.el9_4.x86_64                                                                         10/11
+  Installing       : nfs-utils-1:2.5.4-26.el9_4.x86_64                                                                         10/11
+  Running scriptlet: nfs-utils-1:2.5.4-26.el9_4.x86_64                                                                         10/11
+  Installing       : sssd-nfs-idmap-2.9.4-6.el9_4.x86_64                                                                       11/11
+  Running scriptlet: sssd-nfs-idmap-2.9.4-6.el9_4.x86_64                                                                       11/11
+  Verifying        : libev-4.33-5.el9.x86_64                                                                                    1/11
+  Verifying        : libverto-libev-0.3.2-3.el9.x86_64                                                                          2/11
+  Verifying        : quota-1:4.06-6.el9.x86_64                                                                                  3/11
+  Verifying        : quota-nls-1:4.06-6.el9.noarch                                                                              4/11
+  Verifying        : keyutils-1.6.3-1.el9.x86_64                                                                                5/11
+  Verifying        : gssproxy-0.8.4-6.el9.x86_64                                                                                6/11
+  Verifying        : libtirpc-1.3.3-8.el9_4.x86_64                                                                              7/11
+  Verifying        : rpcbind-1.2.6-7.el9.x86_64                                                                                 8/11
+  Verifying        : sssd-nfs-idmap-2.9.4-6.el9_4.x86_64                                                                        9/11
+  Verifying        : libnfsidmap-1:2.5.4-26.el9_4.x86_64                                                                       10/11
+  Verifying        : nfs-utils-1:2.5.4-26.el9_4.x86_64                                                                         11/11
+Installed products updated.
+
+Installed:
+  gssproxy-0.8.4-6.el9.x86_64                 keyutils-1.6.3-1.el9.x86_64                 libev-4.33-5.el9.x86_64
+  libnfsidmap-1:2.5.4-26.el9_4.x86_64         libtirpc-1.3.3-8.el9_4.x86_64               libverto-libev-0.3.2-3.el9.x86_64
+  nfs-utils-1:2.5.4-26.el9_4.x86_64           quota-1:4.06-6.el9.x86_64                   quota-nls-1:4.06-6.el9.noarch
+  rpcbind-1.2.6-7.el9.x86_64                  sssd-nfs-idmap-2.9.4-6.el9_4.x86_64
+
+Complete!
+[root@redhatS ~]# mkdir /redhatD
+[root@redhatS ~]# sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport 172.31.11.54:/ /redhatD/
+^[[A^[[A^[[B^[[B^[[B^[[B^[[B^[[B^C
+[root@redhatS ~]# sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport 172.31.11.54:/ /redhatD/
+^C
+[root@redhatS ~]# mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport 172.31.11.54:/ /redhat
+D/
+^C
+[root@redhatS ~]# exit
+exit
+[root@ip-172-31-11-168 ~]# exit
+logout
+[ec2-user@ip-172-31-11-168 ~]$ exit
+logout
+Connection to ec2-3-110-175-23.ap-south-1.compute.amazonaws.com closed.
+PS C:\Users\10747889\Downloads> ssh -i "test1-key.pem" ec2-user@ec2-3-110-175-23.ap-south-1.compute.amazonaws.com
+Register this system with Red Hat Insights: insights-client --register
+Create an account or view all your systems at https://red.ht/insights-dashboard
+Last login: Thu Sep  5 06:02:19 2024 from 165.225.120.239
+[ec2-user@redhatS ~]$ sudo su -
+Last login: Thu Sep  5 06:02:23 UTC 2024 on pts/0
+[root@redhatS ~]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        4.0M     0  4.0M   0% /dev
+tmpfs           383M     0  383M   0% /dev/shm
+tmpfs           154M  4.4M  149M   3% /run
+/dev/xvda4      8.8G  1.6G  7.3G  18% /
+/dev/xvda3      960M  168M  793M  18% /boot
+/dev/xvda2      200M  7.1M  193M   4% /boot/efi
+tmpfs            77M     0   77M   0% /run/user/1000
+[root@redhatS ~]# mkdir /redhat
+[root@redhatS ~]# mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport 172.31.11.54:/ /redhat/
+^C
+[root@redhatS ~]# yum install nfs-utils -y
+Updating Subscription Management repositories.
+Unable to read consumer identity
+
+This system is not registered with an entitlement server. You can use "rhc" or "subscription-manager" to register.
+
+Red Hat Enterprise Linux 9 for x86_64 - AppStream from RHUI (RPMs)                                   101 kB/s | 4.5 kB     00:00
+Red Hat Enterprise Linux 9 for x86_64 - BaseOS from RHUI (RPMs)                                       91 kB/s | 4.1 kB     00:00
+Red Hat Enterprise Linux 9 Client Configuration                                                       33 kB/s | 1.5 kB     00:00
+Package nfs-utils-1:2.5.4-26.el9_4.x86_64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[root@redhatS ~]# rpmquery nfs-utils
+nfs-utils-2.5.4-26.el9_4.x86_64
+[root@redhatS ~]# mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport 172.31.11.54:/ /redhat/
+mount.nfs4: Connection timed out
+[root@redhatS ~]# mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport 172.31.11.54:/ /redhat/
+^Bsudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport 172.31.11.54:/ efs^C
+[root@redhatS ~]# mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport 172.31.11.54:/ /redhat
+^C
+[root@redhatS ~]#
+[root@redhatS ~]# cat /etc/os-release
+NAME="Red Hat Enterprise Linux"
+VERSION="9.4 (Plow)"
+ID="rhel"
+ID_LIKE="fedora"
+VERSION_ID="9.4"
+PLATFORM_ID="platform:el9"
+PRETTY_NAME="Red Hat Enterprise Linux 9.4 (Plow)"
+ANSI_COLOR="0;31"
+LOGO="fedora-logo-icon"
+CPE_NAME="cpe:/o:redhat:enterprise_linux:9::baseos"
+HOME_URL="https://www.redhat.com/"
+DOCUMENTATION_URL="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9"
+BUG_REPORT_URL="https://bugzilla.redhat.com/"
+
+REDHAT_BUGZILLA_PRODUCT="Red Hat Enterprise Linux 9"
+REDHAT_BUGZILLA_PRODUCT_VERSION=9.4
+REDHAT_SUPPORT_PRODUCT="Red Hat Enterprise Linux"
+REDHAT_SUPPORT_PRODUCT_VERSION="9.4"
+[root@redhatS ~]# mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport 172.31.11.54:/ /redhat
+[root@redhatS ~]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        4.0M     0  4.0M   0% /dev
+tmpfs           383M     0  383M   0% /dev/shm
+tmpfs           154M  4.4M  149M   3% /run
+/dev/xvda4      8.8G  1.6G  7.3G  18% /
+/dev/xvda3      960M  168M  793M  18% /boot
+/dev/xvda2      200M  7.1M  193M   4% /boot/efi
+tmpfs            77M     0   77M   0% /run/user/1000
+172.31.11.54:/  8.0E     0  8.0E   0% /redhat
+[root@redhatS ~]# cd /redhat
+[root@redhatS redhat]# ll
+total 440
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt1
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt10
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt2
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt3
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt4
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt5
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt6
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt7
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt8
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt9
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt1
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt10
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt100
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt11
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt12
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt13
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt14
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt15
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt16
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt17
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt18
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt19
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt2
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt20
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt21
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt22
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt23
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt24
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt25
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt26
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt27
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt28
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt29
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt3
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt30
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt31
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt32
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt33
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt34
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt35
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt36
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt37
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt38
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt39
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt4
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt40
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt41
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt42
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt43
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt44
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt45
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt46
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt47
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt48
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt49
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt5
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt50
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt51
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt52
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt53
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt54
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt55
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt56
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt57
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt58
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt59
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt6
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt60
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt61
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt62
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt63
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt64
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt65
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt66
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt67
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt68
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt69
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt7
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt70
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt71
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt72
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt73
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt74
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt75
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt76
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt77
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt78
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt79
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt8
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt80
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt81
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt82
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt83
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt84
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt85
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt86
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt87
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt88
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt89
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt9
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt90
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt91
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt92
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt93
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt94
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt95
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt96
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt97
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt98
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt99
+[root@redhatS redhat]#

@@ -1,0 +1,169 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\10747889> cd .\Downloads\
+PS C:\Users\10747889\Downloads> ssh -i "q1.pem" ec2-user@ec2-13-229-96-194.ap-southeast-1.compute.amazonaws.com
+The authenticity of host 'ec2-13-229-96-194.ap-southeast-1.compute.amazonaws.com (13.229.96.194)' can't be established.
+ED25519 key fingerprint is SHA256:BievjF6BB8wZNe1qCKTtL+HRkMTeYaa0UkBP6Z4puKY.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'ec2-13-229-96-194.ap-southeast-1.compute.amazonaws.com' (ED25519) to the list of known hosts.
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-46-141 ~]$ sudo su -
+[root@ip-172-31-46-141 ~]# mkdir /sgData
+[root@ip-172-31-46-141 ~]# sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport 172.31.18.84:/ /sgData/
+[root@ip-172-31-46-141 ~]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        4.0M     0  4.0M   0% /dev
+tmpfs           475M     0  475M   0% /dev/shm
+tmpfs           190M  440K  190M   1% /run
+/dev/xvda1      8.0G  1.6G  6.5G  20% /
+tmpfs           475M     0  475M   0% /tmp
+/dev/xvda128     10M  1.3M  8.7M  13% /boot/efi
+tmpfs            95M     0   95M   0% /run/user/1000
+172.31.18.84:/  8.0E     0  8.0E   0% /sgData
+[root@ip-172-31-46-141 ~]# cd /sgData
+[root@ip-172-31-46-141 sgData]# ll
+total 0
+[root@ip-172-31-46-141 sgData]# client_loop: send disconnect: Connection reset
+PS C:\Users\10747889\Downloads> ssh -i "q1.pem" ec2-user@ec2-13-229-96-194.ap-southeast-1.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Thu Sep  5 06:52:11 2024 from 165.225.120.239
+[ec2-user@ip-172-31-46-141 ~]$ sudo su -
+Last login: Thu Sep  5 06:52:15 UTC 2024 on pts/1
+[root@ip-172-31-46-141 ~]# sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport 172.31.18.84:/ /sgData/
+[root@ip-172-31-46-141 ~]# cd /sgData
+[root@ip-172-31-46-141 sgData]# ll
+total 440
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt1
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt10
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt2
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt3
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt4
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt5
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt6
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt7
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt8
+-rw-r--r--. 1 root root 0 Sep  5 06:16 pps.txt9
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt1
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt10
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt100
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt11
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt12
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt13
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt14
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt15
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt16
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt17
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt18
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt19
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt2
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt20
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt21
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt22
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt23
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt24
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt25
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt26
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt27
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt28
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt29
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt3
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt30
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt31
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt32
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt33
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt34
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt35
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt36
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt37
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt38
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt39
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt4
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt40
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt41
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt42
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt43
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt44
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt45
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt46
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt47
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt48
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt49
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt5
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt50
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt51
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt52
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt53
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt54
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt55
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt56
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt57
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt58
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt59
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt6
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt60
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt61
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt62
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt63
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt64
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt65
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt66
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt67
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt68
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt69
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt7
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt70
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt71
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt72
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt73
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt74
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt75
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt76
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt77
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt78
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt79
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt8
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt80
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt81
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt82
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt83
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt84
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt85
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt86
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt87
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt88
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt89
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt9
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt90
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt91
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt92
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt93
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt94
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt95
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt96
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt97
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt98
+-rw-r--r--. 1 root root 0 Sep  5 06:14 pranav.txt99
+[root@ip-172-31-46-141 sgData]# client_loop: send disconnect: Connection reset
+PS C:\Users\10747889\Downloads>
