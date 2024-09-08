@@ -1,0 +1,1129 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\10747889> cd .\Downloads\
+PS C:\Users\10747889\Downloads> ssh -i "test1-key.pem" ec2-user@ec2-43-204-114-28.ap-south-1.compute.amazonaws.com
+The authenticity of host 'ec2-43-204-114-28.ap-south-1.compute.amazonaws.com (43.204.114.28)' can't be established.
+ED25519 key fingerprint is SHA256:72Nr8KmIkFfAF6gQz+ooaDRMO2onZ4fIMmIG8g5vQXs.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'ec2-43-204-114-28.ap-south-1.compute.amazonaws.com' (ED25519) to the list of known hosts.
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-1-1 ~]$ sudo su -
+[root@ip-172-31-1-1 ~]# lsblk
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0   8G  0 disk
+├─xvda1   202:1    0   8G  0 part /
+├─xvda127 259:0    0   1M  0 part
+└─xvda128 259:1    0  10M  0 part /boot/efi
+[root@ip-172-31-1-1 ~]# lsblk
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0   8G  0 disk
+├─xvda1   202:1    0   8G  0 part /
+├─xvda127 259:0    0   1M  0 part
+└─xvda128 259:1    0  10M  0 part /boot/efi
+xvdc      202:32   0  10G  0 disk
+[root@ip-172-31-1-1 ~]# mkfs.ext4 /dev/xvdc
+mke2fs 1.46.5 (30-Dec-2021)
+Creating filesystem with 2621440 4k blocks and 655360 inodes
+Filesystem UUID: edcfda2c-e6e1-4780-b707-f4176a01d132
+Superblock backups stored on blocks:
+        32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+[root@ip-172-31-1-1 ~]# blkid
+/dev/xvdc: UUID="edcfda2c-e6e1-4780-b707-f4176a01d132" BLOCK_SIZE="4096" TYPE="ext4"
+/dev/xvda128: SEC_TYPE="msdos" UUID="78B3-5976" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="EFI System Partition" PARTUUID="a16c46c5-0bb6-4fd9-9228-bdbcebcb5556"
+/dev/xvda127: PARTLABEL="BIOS Boot Partition" PARTUUID="dc0fd69c-eed3-4ab3-9852-4717e4fdc12e"
+/dev/xvda1: LABEL="/" UUID="aac19826-060d-43e9-a76d-4d9cae6ea783" BLOCK_SIZE="4096" TYPE="xfs" PARTLABEL="Linux" PARTUUID="e4b828f9-e589-4822-8381-d2f4584ab8d4"
+[root@ip-172-31-1-1 ~]# mkdir /data
+[root@ip-172-31-1-1 ~]# mount /dev/xvdc
+mount: /dev/xvdc: can't find in /etc/fstab.
+[root@ip-172-31-1-1 ~]# mount /dev/xvdc /data/
+[root@ip-172-31-1-1 ~]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        4.0M     0  4.0M   0% /dev
+tmpfs           475M     0  475M   0% /dev/shm
+tmpfs           190M  456K  190M   1% /run
+/dev/xvda1      8.0G  1.6G  6.5G  20% /
+tmpfs           475M     0  475M   0% /tmp
+/dev/xvda128     10M  1.3M  8.7M  13% /boot/efi
+tmpfs            95M     0   95M   0% /run/user/1000
+/dev/xvdc       9.8G   24K  9.3G   1% /data
+[root@ip-172-31-1-1 ~]# cd /data/
+[root@ip-172-31-1-1 data]# touch pranav.txt{1..100}
+[root@ip-172-31-1-1 data]# ll
+total 16
+drwx------. 2 root root 16384 Sep  4 07:19 lost+found
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt1
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt10
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt100
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt11
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt12
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt13
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt14
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt15
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt16
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt17
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt18
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt19
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt2
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt20
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt21
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt22
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt23
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt24
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt25
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt26
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt27
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt28
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt29
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt3
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt30
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt31
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt32
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt33
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt34
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt35
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt36
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt37
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt38
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt39
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt4
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt40
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt41
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt42
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt43
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt44
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt45
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt46
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt47
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt48
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt49
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt5
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt50
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt51
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt52
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt53
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt54
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt55
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt56
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt57
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt58
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt59
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt6
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt60
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt61
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt62
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt63
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt64
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt65
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt66
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt67
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt68
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt69
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt7
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt70
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt71
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt72
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt73
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt74
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt75
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt76
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt77
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt78
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt79
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt8
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt80
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt81
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt82
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt83
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt84
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt85
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt86
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt87
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt88
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt89
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt9
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt90
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt91
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt92
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt93
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt94
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt95
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt96
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt97
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt98
+-rw-r--r--. 1 root root     0 Sep  4 07:25 pranav.txt99
+[root@ip-172-31-1-1 data]# cd
+[root@ip-172-31-1-1 ~]# lsblk
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0   8G  0 disk
+├─xvda1   202:1    0   8G  0 part /
+├─xvda127 259:0    0   1M  0 part
+└─xvda128 259:1    0  10M  0 part /boot/efi
+xvdc      202:32   0  10G  0 disk /data
+[root@ip-172-31-1-1 ~]# vim .etc/fstab
+[root@ip-172-31-1-1 ~]# vim /etc/fstab
+[root@ip-172-31-1-1 ~]# blkid
+/dev/xvdc: UUID="edcfda2c-e6e1-4780-b707-f4176a01d132" BLOCK_SIZE="4096" TYPE="ext4"
+/dev/xvda128: SEC_TYPE="msdos" UUID="78B3-5976" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="EFI System Partition" PARTUUID="a16c46c5-0bb6-4fd9-9228-bdbcebcb5556"
+/dev/xvda1: LABEL="/" UUID="aac19826-060d-43e9-a76d-4d9cae6ea783" BLOCK_SIZE="4096" TYPE="xfs" PARTLABEL="Linux" PARTUUID="e4b828f9-e589-4822-8381-d2f4584ab8d4"
+/dev/xvda127: PARTLABEL="BIOS Boot Partition" PARTUUID="dc0fd69c-eed3-4ab3-9852-4717e4fdc12e"
+[root@ip-172-31-1-1 ~]# vim /etc/fstab
+[root@ip-172-31-1-1 ~]#
+Broadcast message from root@localhost (Wed 2024-09-04 07:30:12 UTC):
+
+The system will power off now!
+
+
+Broadcast message from root@localhost (Wed 2024-09-04 07:30:12 UTC):
+
+The system will power off now!
+
+Connection to ec2-43-204-114-28.ap-south-1.compute.amazonaws.com closed by remote host.
+Connection to ec2-43-204-114-28.ap-south-1.compute.amazonaws.com closed.
+PS C:\Users\10747889\Downloads> ssh -i "test1-key.pem" ec2-user@ec2-43-204-114-28.ap-south-1.compute.amazonaws.com
+ssh: connect to host ec2-43-204-114-28.ap-south-1.compute.amazonaws.com port 22: Connection refused
+PS C:\Users\10747889\Downloads> ssh -i "test1-key.pem" ec2-user@ec2-43-204-114-28.ap-south-1.compute.amazonaws.com
+ssh: Could not resolve hostname ec2-43-204-114-28.ap-south-1.compute.amazonaws.com: No such host is known.
+PS C:\Users\10747889\Downloads> cd .\Downloads\
+cd : Cannot find path 'C:\Users\10747889\Downloads\Downloads\' because it does not exist.
+At line:1 char:1
++ cd .\Downloads\
++ ~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\10747889\Downloads\Downloads\:String) [Set-Location], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+
+PS C:\Users\10747889\Downloads> ssh -i "test1-key.pem" ec2-user@ec2-43-204-114-28.ap-south-1.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Wed Sep  4 07:12:57 2024 from 165.225.120.239
+[ec2-user@ip-172-31-1-1 ~]$ sudo su -
+Last login: Wed Sep  4 07:13:04 UTC 2024 on pts/1
+[root@ip-172-31-1-1 ~]# lsblk
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0   8G  0 disk
+├─xvda1   202:1    0   8G  0 part /
+├─xvda127 259:0    0   1M  0 part
+└─xvda128 259:1    0  10M  0 part /boot/efi
+xvdc      202:32   0  10G  0 disk
+[root@ip-172-31-1-1 ~]# blkid
+/dev/xvdc: UUID="edcfda2c-e6e1-4780-b707-f4176a01d132" BLOCK_SIZE="4096" TYPE="ext4"
+/dev/xvda128: SEC_TYPE="msdos" UUID="78B3-5976" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="EFI System Partition" PARTUUID="a16c46c5-0bb6-4fd9-9228-bdbcebcb5556"
+/dev/xvda127: PARTLABEL="BIOS Boot Partition" PARTUUID="dc0fd69c-eed3-4ab3-9852-4717e4fdc12e"
+/dev/xvda1: LABEL="/" UUID="aac19826-060d-43e9-a76d-4d9cae6ea783" BLOCK_SIZE="4096" TYPE="xfs" PARTLABEL="Linux" PARTUUID="e4b828f9-e589-4822-8381-d2f4584ab8d4"
+[root@ip-172-31-1-1 ~]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        4.0M     0  4.0M   0% /dev
+tmpfs           475M     0  475M   0% /dev/shm
+tmpfs           190M  452K  190M   1% /run
+/dev/xvda1      8.0G  1.6G  6.5G  20% /
+tmpfs           475M     0  475M   0% /tmp
+/dev/xvda128     10M  1.3M  8.7M  13% /boot/efi
+tmpfs            95M     0   95M   0% /run/user/1000
+[root@ip-172-31-1-1 ~]# vim /etc/fstab
+[root@ip-172-31-1-1 ~]# vim /etc/fstab
+[root@ip-172-31-1-1 ~]#
+Broadcast message from root@ip-172-31-1-1.ap-south-1.compute.internal (Wed 2024-09-04 08:30:23 UTC):
+
+The system will power off now!
+
+
+Broadcast message from root@ip-172-31-1-1.ap-south-1.compute.internal (Wed 2024-09-04 08:30:23 UTC):
+
+The system will power off now!
+
+Connection to ec2-43-204-114-28.ap-south-1.compute.amazonaws.com closed by remote host.
+Connection to ec2-43-204-114-28.ap-south-1.compute.amazonaws.com closed.
+PS C:\Users\10747889\Downloads> ssh -i "test1-key.pem" ec2-user@ec2-43-204-114-28.ap-south-1.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Wed Sep  4 08:27:49 2024 from 103.244.155.134
+[ec2-user@ip-172-31-1-1 ~]$ sudo su -
+Last login: Wed Sep  4 08:27:53 UTC 2024 on pts/1
+[root@ip-172-31-1-1 ~]# lsbklk
+-bash: lsbklk: command not found
+[root@ip-172-31-1-1 ~]# lsblk
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0   8G  0 disk
+├─xvda1   202:1    0   8G  0 part /
+├─xvda127 259:0    0   1M  0 part
+└─xvda128 259:1    0  10M  0 part /boot/efi
+xvdc      202:32   0  10G  0 disk
+[root@ip-172-31-1-1 ~]# mkfs.ext4 /dev/xvdc
+mke2fs 1.46.5 (30-Dec-2021)
+/dev/xvdc contains a ext4 file system
+        last mounted on /data on Wed Sep  4 07:24:11 2024
+Proceed anyway? (y,N) y
+Creating filesystem with 2621440 4k blocks and 655360 inodes
+Filesystem UUID: 55fef226-29cd-4f2e-9359-e58f83712538
+Superblock backups stored on blocks:
+        32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+[root@ip-172-31-1-1 ~]# blkid
+/dev/xvdc: UUID="55fef226-29cd-4f2e-9359-e58f83712538" BLOCK_SIZE="4096" TYPE="ext4"
+/dev/xvda128: SEC_TYPE="msdos" UUID="78B3-5976" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="EFI System Partition" PARTUUID="a16c46c5-0bb6-4fd9-9228-bdbcebcb5556"
+/dev/xvda127: PARTLABEL="BIOS Boot Partition" PARTUUID="dc0fd69c-eed3-4ab3-9852-4717e4fdc12e"
+/dev/xvda1: LABEL="/" UUID="aac19826-060d-43e9-a76d-4d9cae6ea783" BLOCK_SIZE="4096" TYPE="xfs" PARTLABEL="Linux" PARTUUID="e4b828f9-e589-4822-8381-d2f4584ab8d4"
+[root@ip-172-31-1-1 ~]# mkdir /data
+mkdir: cannot create directory ‘/data’: File exists
+[root@ip-172-31-1-1 ~]# mkdir /data1
+[root@ip-172-31-1-1 ~]# mount /dev/xvdc /data/
+[root@ip-172-31-1-1 ~]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        4.0M     0  4.0M   0% /dev
+tmpfs           475M     0  475M   0% /dev/shm
+tmpfs           190M  456K  190M   1% /run
+/dev/xvda1      8.0G  1.6G  6.5G  20% /
+tmpfs           475M     0  475M   0% /tmp
+/dev/xvda128     10M  1.3M  8.7M  13% /boot/efi
+tmpfs            95M     0   95M   0% /run/user/1000
+/dev/xvdc       9.8G   24K  9.3G   1% /data
+[root@ip-172-31-1-1 ~]# cd /data/
+[root@ip-172-31-1-1 data]# cd /data1/
+[root@ip-172-31-1-1 data1]# cd
+[root@ip-172-31-1-1 ~]# cd /data1/
+[root@ip-172-31-1-1 data1]# touch pranav.txt{1..100}
+[root@ip-172-31-1-1 data1]# ll
+total 0
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt1
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt10
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt100
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt11
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt12
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt13
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt14
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt15
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt16
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt17
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt18
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt19
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt2
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt20
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt21
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt22
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt23
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt24
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt25
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt26
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt27
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt28
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt29
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt3
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt30
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt31
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt32
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt33
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt34
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt35
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt36
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt37
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt38
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt39
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt4
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt40
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt41
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt42
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt43
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt44
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt45
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt46
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt47
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt48
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt49
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt5
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt50
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt51
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt52
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt53
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt54
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt55
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt56
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt57
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt58
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt59
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt6
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt60
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt61
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt62
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt63
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt64
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt65
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt66
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt67
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt68
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt69
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt7
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt70
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt71
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt72
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt73
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt74
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt75
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt76
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt77
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt78
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt79
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt8
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt80
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt81
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt82
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt83
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt84
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt85
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt86
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt87
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt88
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt89
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt9
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt90
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt91
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt92
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt93
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt94
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt95
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt96
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt97
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt98
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt99
+[root@ip-172-31-1-1 data1]# blkid
+/dev/xvdc: UUID="55fef226-29cd-4f2e-9359-e58f83712538" BLOCK_SIZE="4096" TYPE="ext4"
+/dev/xvda128: SEC_TYPE="msdos" UUID="78B3-5976" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="EFI System Partition" PARTUUID="a16c46c5-0bb6-4fd9-9228-bdbcebcb5556"
+/dev/xvda1: LABEL="/" UUID="aac19826-060d-43e9-a76d-4d9cae6ea783" BLOCK_SIZE="4096" TYPE="xfs" PARTLABEL="Linux" PARTUUID="e4b828f9-e589-4822-8381-d2f4584ab8d4"
+/dev/xvda127: PARTLABEL="BIOS Boot Partition" PARTUUID="dc0fd69c-eed3-4ab3-9852-4717e4fdc12e"
+[root@ip-172-31-1-1 data1]# cd
+[root@ip-172-31-1-1 ~]# vim /etc/fstab
+[root@ip-172-31-1-1 ~]#
+Broadcast message from root@ip-172-31-1-1.ap-south-1.compute.internal (Wed 2024-09-04 08:36:31 UTC):
+
+The system will power off now!
+
+
+Broadcast message from root@ip-172-31-1-1.ap-south-1.compute.internal (Wed 2024-09-04 08:36:31 UTC):
+
+The system will power off now!
+
+Connection to ec2-43-204-114-28.ap-south-1.compute.amazonaws.com closed by remote host.
+Connection to ec2-43-204-114-28.ap-south-1.compute.amazonaws.com closed.
+PS C:\Users\10747889\Downloads> ssh -i "test1-key.pem" ec2-user@ec2-43-204-114-28.ap-south-1.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Wed Sep  4 08:31:17 2024 from 136.226.232.251
+^[[B^[[B[ec2-user@ip-172-31-1-1 ~]$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        4.0M     0  4.0M   0% /dev
+tmpfs           475M     0  475M   0% /dev/shm
+tmpfs           190M  452K  190M   1% /run
+/dev/xvda1      8.0G  1.6G  6.5G  20% /
+tmpfs           475M     0  475M   0% /tmp
+/dev/xvdc       9.8G   24K  9.3G   1% /data
+/dev/xvda128     10M  1.3M  8.7M  13% /boot/efi
+tmpfs            95M     0   95M   0% /run/user/1000
+[ec2-user@ip-172-31-1-1 ~]$ cd /data/
+[ec2-user@ip-172-31-1-1 data]$ ll
+total 16
+drwx------. 2 root root 16384 Sep  4 08:32 lost+found
+[ec2-user@ip-172-31-1-1 data]$ ls
+lost+found
+[ec2-user@ip-172-31-1-1 data]$ cd /data1/
+[ec2-user@ip-172-31-1-1 data1]$ ll
+total 0
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt1
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt10
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt100
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt11
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt12
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt13
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt14
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt15
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt16
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt17
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt18
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt19
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt2
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt20
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt21
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt22
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt23
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt24
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt25
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt26
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt27
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt28
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt29
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt3
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt30
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt31
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt32
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt33
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt34
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt35
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt36
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt37
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt38
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt39
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt4
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt40
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt41
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt42
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt43
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt44
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt45
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt46
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt47
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt48
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt49
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt5
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt50
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt51
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt52
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt53
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt54
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt55
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt56
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt57
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt58
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt59
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt6
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt60
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt61
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt62
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt63
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt64
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt65
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt66
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt67
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt68
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt69
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt7
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt70
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt71
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt72
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt73
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt74
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt75
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt76
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt77
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt78
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt79
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt8
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt80
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt81
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt82
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt83
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt84
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt85
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt86
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt87
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt88
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt89
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt9
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt90
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt91
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt92
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt93
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt94
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt95
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt96
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt97
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt98
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt99
+[ec2-user@ip-172-31-1-1 data1]$ lsblk
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0   8G  0 disk
+├─xvda1   202:1    0   8G  0 part /
+├─xvda127 259:0    0   1M  0 part
+└─xvda128 259:1    0  10M  0 part /boot/efi
+xvdc      202:32   0  10G  0 disk /data
+[ec2-user@ip-172-31-1-1 data1]$ cd
+[ec2-user@ip-172-31-1-1 ~]$ client_loop: send disconnect: Connection reset
+PS C:\Users\10747889\Downloads> ssh -i "test1-key.pem" ec2-user@ec2-43-204-114-28.ap-south-1.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Wed Sep  4 08:36:56 2024 from 136.226.232.251
+[ec2-user@ip-172-31-1-1 ~]$ sudi su -
+-bash: sudi: command not found
+[ec2-user@ip-172-31-1-1 ~]$ sudo su -
+Last login: Wed Sep  4 08:31:21 UTC 2024 on pts/1
+[root@ip-172-31-1-1 ~]# lsblk
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0   8G  0 disk
+├─xvda1   202:1    0   8G  0 part /
+├─xvda127 259:0    0   1M  0 part
+└─xvda128 259:1    0  10M  0 part /boot/efi
+xvdc      202:32   0  10G  0 disk /data
+[root@ip-172-31-1-1 ~]# lsblk
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0   8G  0 disk
+├─xvda1   202:1    0   8G  0 part /
+├─xvda127 259:0    0   1M  0 part
+└─xvda128 259:1    0  10M  0 part /boot/efi
+xvdc      202:32   0  10G  0 disk /data
+[root@ip-172-31-1-1 ~]# blkid
+/dev/xvdc: UUID="55fef226-29cd-4f2e-9359-e58f83712538" BLOCK_SIZE="4096" TYPE="ext4"
+/dev/xvda128: SEC_TYPE="msdos" UUID="78B3-5976" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="EFI System Partition" PARTUUID="a16c46c5-0bb6-4fd9-9228-bdbcebcb5556"
+/dev/xvda127: PARTLABEL="BIOS Boot Partition" PARTUUID="dc0fd69c-eed3-4ab3-9852-4717e4fdc12e"
+/dev/xvda1: LABEL="/" UUID="aac19826-060d-43e9-a76d-4d9cae6ea783" BLOCK_SIZE="4096" TYPE="xfs" PARTLABEL="Linux" PARTUUID="e4b828f9-e589-4822-8381-d2f4584ab8d4"
+[root@ip-172-31-1-1 ~]# dh -f
+-bash: dh: command not found
+[root@ip-172-31-1-1 ~]# dh -h
+-bash: dh: command not found
+[root@ip-172-31-1-1 ~]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        4.0M     0  4.0M   0% /dev
+tmpfs           475M     0  475M   0% /dev/shm
+tmpfs           190M  464K  190M   1% /run
+/dev/xvda1      8.0G  1.6G  6.5G  20% /
+tmpfs           475M     0  475M   0% /tmp
+/dev/xvdc       9.8G   24K  9.3G   1% /data
+/dev/xvda128     10M  1.3M  8.7M  13% /boot/efi
+tmpfs            95M     0   95M   0% /run/user/1000
+[root@ip-172-31-1-1 ~]# lsblk
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0   8G  0 disk
+├─xvda1   202:1    0   8G  0 part /
+├─xvda127 259:0    0   1M  0 part
+└─xvda128 259:1    0  10M  0 part /boot/efi
+xvdc      202:32   0  15G  0 disk /data
+[root@ip-172-31-1-1 ~]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        4.0M     0  4.0M   0% /dev
+tmpfs           475M     0  475M   0% /dev/shm
+tmpfs           190M  464K  190M   1% /run
+/dev/xvda1      8.0G  1.6G  6.5G  20% /
+tmpfs           475M     0  475M   0% /tmp
+/dev/xvdc       9.8G   24K  9.3G   1% /data
+/dev/xvda128     10M  1.3M  8.7M  13% /boot/efi
+tmpfs            95M     0   95M   0% /run/user/1000
+[root@ip-172-31-1-1 ~]# resize2fs /dev/xvdc
+resize2fs 1.46.5 (30-Dec-2021)
+Filesystem at /dev/xvdc is mounted on /data; on-line resizing required
+old_desc_blocks = 2, new_desc_blocks = 2
+The filesystem on /dev/xvdc is now 3932160 (4k) blocks long.
+
+[root@ip-172-31-1-1 ~]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        4.0M     0  4.0M   0% /dev
+tmpfs           475M     0  475M   0% /dev/shm
+tmpfs           190M  464K  190M   1% /run
+/dev/xvda1      8.0G  1.6G  6.5G  20% /
+tmpfs           475M     0  475M   0% /tmp
+/dev/xvdc        15G   24K   14G   1% /data
+/dev/xvda128     10M  1.3M  8.7M  13% /boot/efi
+tmpfs            95M     0   95M   0% /run/user/1000
+[root@ip-172-31-1-1 ~]# client_loop: send disconnect: Connection reset
+PS C:\Users\10747889\Downloads> ssh -i "test1-key.pem" ec2-user@ec2-43-204-114-28.ap-south-1.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Wed Sep  4 08:56:10 2024 from 136.226.232.251
+[ec2-user@ip-172-31-1-1 ~]$ sudo su -
+Last login: Wed Sep  4 08:56:19 UTC 2024 on pts/2
+[root@ip-172-31-1-1 ~]# lsblk
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0   8G  0 disk
+├─xvda1   202:1    0   8G  0 part /
+├─xvda127 259:0    0   1M  0 part
+└─xvda128 259:1    0  10M  0 part /boot/efi
+xvdb      202:16   0   5G  0 disk
+xvdc      202:32   0  15G  0 disk /data
+[root@ip-172-31-1-1 ~]# mkdir /data2
+[root@ip-172-31-1-1 ~]# mount /dev/xvdb /data2/
+mount: /data2: wrong fs type, bad option, bad superblock on /dev/xvdb, missing codepage or helper program, or other error.
+[root@ip-172-31-1-1 ~]# mkfs.ext4 /dev/xvdb
+mke2fs 1.46.5 (30-Dec-2021)
+Creating filesystem with 1310720 4k blocks and 327680 inodes
+Filesystem UUID: d54679bb-4a84-4ff9-8182-f1a03a214da5
+Superblock backups stored on blocks:
+        32768, 98304, 163840, 229376, 294912, 819200, 884736
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+[root@ip-172-31-1-1 ~]# mount /dev/xvdb /data2/
+[root@ip-172-31-1-1 ~]# mv * client_loop: send disconnect: Connection reset
+PS C:\Users\10747889\Downloads> ssh -i "test1-key.pem" ec2-user@ec2-43-204-114-28.ap-south-1.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Wed Sep  4 09:18:35 2024 from 136.226.233.30
+[ec2-user@ip-172-31-1-1 ~]$ sudo su -
+Last login: Wed Sep  4 09:18:40 UTC 2024 on pts/4
+[root@ip-172-31-1-1 ~]# lsblk
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0   8G  0 disk
+├─xvda1   202:1    0   8G  0 part /
+├─xvda127 259:0    0   1M  0 part
+└─xvda128 259:1    0  10M  0 part /boot/efi
+xvdb      202:16   0   5G  0 disk /data2
+xvdc      202:32   0  15G  0 disk /data
+[root@ip-172-31-1-1 ~]# cd /data1
+[root@ip-172-31-1-1 data1]# ll
+total 0
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt1
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt10
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt100
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt11
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt12
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt13
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt14
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt15
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt16
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt17
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt18
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt19
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt2
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt20
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt21
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt22
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt23
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt24
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt25
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt26
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt27
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt28
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt29
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt3
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt30
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt31
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt32
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt33
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt34
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt35
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt36
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt37
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt38
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt39
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt4
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt40
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt41
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt42
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt43
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt44
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt45
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt46
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt47
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt48
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt49
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt5
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt50
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt51
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt52
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt53
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt54
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt55
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt56
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt57
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt58
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt59
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt6
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt60
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt61
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt62
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt63
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt64
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt65
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt66
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt67
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt68
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt69
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt7
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt70
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt71
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt72
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt73
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt74
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt75
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt76
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt77
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt78
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt79
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt8
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt80
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt81
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt82
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt83
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt84
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt85
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt86
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt87
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt88
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt89
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt9
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt90
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt91
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt92
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt93
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt94
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt95
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt96
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt97
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt98
+-rw-r--r--. 1 root root 0 Sep  4 08:34 pranav.txt99
+[root@ip-172-31-1-1 data1]# mv * /data2/
+[root@ip-172-31-1-1 data1]# cd
+[root@ip-172-31-1-1 ~]# cd /data2
+[root@ip-172-31-1-1 data2]# ll
+total 16
+drwx------. 2 root root 16384 Sep  4 09:20 lost+found
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt1
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt10
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt100
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt11
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt12
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt13
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt14
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt15
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt16
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt17
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt18
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt19
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt2
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt20
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt21
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt22
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt23
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt24
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt25
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt26
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt27
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt28
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt29
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt3
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt30
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt31
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt32
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt33
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt34
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt35
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt36
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt37
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt38
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt39
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt4
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt40
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt41
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt42
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt43
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt44
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt45
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt46
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt47
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt48
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt49
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt5
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt50
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt51
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt52
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt53
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt54
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt55
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt56
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt57
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt58
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt59
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt6
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt60
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt61
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt62
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt63
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt64
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt65
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt66
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt67
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt68
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt69
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt7
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt70
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt71
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt72
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt73
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt74
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt75
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt76
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt77
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt78
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt79
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt8
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt80
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt81
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt82
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt83
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt84
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt85
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt86
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt87
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt88
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt89
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt9
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt90
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt91
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt92
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt93
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt94
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt95
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt96
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt97
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt98
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt99
+[root@ip-172-31-1-1 data2]# vim /etc/fstab
+[root@ip-172-31-1-1 data2]# systemctl daemon-reload
+[root@ip-172-31-1-1 data2]# systemctl undevsettle
+Unknown command verb undevsettle.
+[root@ip-172-31-1-1 data2]# unmount /data
+-bash: unmount: command not found
+[root@ip-172-31-1-1 data2]# cd
+[root@ip-172-31-1-1 ~]# unmount /data1
+-bash: unmount: command not found
+[root@ip-172-31-1-1 ~]# umount /data1
+umount: /data1: not mounted.
+[root@ip-172-31-1-1 ~]# umount /data
+[root@ip-172-31-1-1 ~]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        4.0M     0  4.0M   0% /dev
+tmpfs           475M     0  475M   0% /dev/shm
+tmpfs           190M  488K  190M   1% /run
+/dev/xvda1      8.0G  1.6G  6.5G  20% /
+tmpfs           475M     0  475M   0% /tmp
+/dev/xvda128     10M  1.3M  8.7M  13% /boot/efi
+tmpfs            95M     0   95M   0% /run/user/1000
+/dev/xvdb       4.9G   24K  4.6G   1% /data2
+[root@ip-172-31-1-1 ~]# cd /data2/
+[root@ip-172-31-1-1 data2]# ll
+total 16
+drwx------. 2 root root 16384 Sep  4 09:20 lost+found
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt1
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt10
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt100
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt11
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt12
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt13
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt14
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt15
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt16
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt17
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt18
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt19
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt2
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt20
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt21
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt22
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt23
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt24
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt25
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt26
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt27
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt28
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt29
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt3
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt30
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt31
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt32
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt33
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt34
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt35
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt36
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt37
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt38
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt39
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt4
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt40
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt41
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt42
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt43
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt44
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt45
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt46
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt47
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt48
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt49
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt5
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt50
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt51
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt52
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt53
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt54
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt55
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt56
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt57
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt58
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt59
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt6
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt60
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt61
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt62
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt63
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt64
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt65
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt66
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt67
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt68
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt69
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt7
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt70
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt71
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt72
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt73
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt74
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt75
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt76
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt77
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt78
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt79
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt8
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt80
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt81
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt82
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt83
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt84
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt85
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt86
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt87
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt88
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt89
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt9
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt90
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt91
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt92
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt93
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt94
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt95
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt96
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt97
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt98
+-rw-r--r--. 1 root root     0 Sep  4 08:34 pranav.txt99
+[root@ip-172-31-1-1 data2]# cd
+[root@ip-172-31-1-1 ~]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        4.0M     0  4.0M   0% /dev
+tmpfs           475M     0  475M   0% /dev/shm
+tmpfs           190M  488K  190M   1% /run
+/dev/xvda1      8.0G  1.6G  6.5G  20% /
+tmpfs           475M     0  475M   0% /tmp
+/dev/xvda128     10M  1.3M  8.7M  13% /boot/efi
+tmpfs            95M     0   95M   0% /run/user/1000
+/dev/xvdb       4.9G   24K  4.6G   1% /data2
+[root@ip-172-31-1-1 ~]# lsblk
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0   8G  0 disk
+├─xvda1   202:1    0   8G  0 part /
+├─xvda127 259:0    0   1M  0 part
+└─xvda128 259:1    0  10M  0 part /boot/efi
+xvdb      202:16   0   5G  0 disk /data2
+xvdc      202:32   0  15G  0 disk
+[root@ip-172-31-1-1 ~]# client_loop: send disconnect: Connection reset
+PS C:\Users\10747889\Downloads> ssh -i "test1-key.pem" ec2-user@ec2-43-204-114-28.ap-south-1.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Wed Sep  4 09:21:28 2024 from 136.226.232.251
+[ec2-user@ip-172-31-1-1 ~]$ sudo su -
+Last login: Wed Sep  4 09:21:33 UTC 2024 on pts/6
+[root@ip-172-31-1-1 ~]# lsblk
+NAME      MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
+xvda      202:0    0  10G  0 disk
+├─xvda1   202:1    0   8G  0 part /
+├─xvda127 259:0    0   1M  0 part
+└─xvda128 259:1    0  10M  0 part /boot/efi
+xvdb      202:16   0   5G  0 disk /data2
+[root@ip-172-31-1-1 ~]# growpart /dev/xvda 1
+CHANGED: partition=1 start=24576 old: size=16752607 end=16777183 new: size=20946911 end=20971487
+[root@ip-172-31-1-1 ~]# xfs_growfs -d /dev/xvda1
+meta-data=/dev/xvda1             isize=512    agcount=2, agsize=1047040 blks
+         =                       sectsz=4096  attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1    bigtime=1 inobtcount=1
+data     =                       bsize=4096   blocks=2094075, imaxpct=25
+         =                       sunit=128    swidth=128 blks
+naming   =version 2              bsize=16384  ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=16384, version=2
+         =                       sectsz=4096  sunit=4 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+data blocks changed from 2094075 to 2618363
+[root@ip-172-31-1-1 ~]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        4.0M     0  4.0M   0% /dev
+tmpfs           475M     0  475M   0% /dev/shm
+tmpfs           190M  492K  190M   1% /run
+/dev/xvda1       10G  1.6G  8.4G  16% /
+tmpfs           475M     0  475M   0% /tmp
+/dev/xvda128     10M  1.3M  8.7M  13% /boot/efi
+tmpfs            95M     0   95M   0% /run/user/1000
+/dev/xvdb       4.9G   24K  4.6G   1% /data2
+[root@ip-172-31-1-1 ~]#
