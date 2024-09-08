@@ -1,0 +1,49 @@
+create instance => connect =>
+terminal :- lsblk
+volumes => create volume => gp2 +10gb + 100Iops => ap-south-1b => attach
+
+terminal :- mkfs.ext4 /dev/xvdb
+            lsblk
+	    mkdir /data
+	    mount /dev/xvdb /data
+	    df -h
+	    cd /data/
+	    touch file.txt{1..100}
+	    ll
+	    blkid
+	    vim /etc/fstab (copy uid)
+	    	uid = -------	/data	ext4	defaults	0	0
+
+reboot
+terminal :- df -h
+
+to modify volume =>
+	extend the volume in aws then in  terminal
+		lsblk
+		df -h
+		resize2fs /dev/xvdb
+
+to add backup volume 
+Add volume in AWS
+Termnal:-
+	cd
+	lsblk
+	mkfs.ext4 /dev/xvdc
+	mkdir /data1
+	mount /dev/xvdc /data1
+	cd /data
+	mv * /data1
+	cd
+	cd /data1
+	ll
+
+Unmount previous volume : - 
+
+terminal:-
+	vim /etc/fstab comment/delete previous volume uid save and quit
+	systemctl daemon-reload
+	umount /data
+	df -h
+	lsblk
+aws :- detach volume => delete volume.
+
