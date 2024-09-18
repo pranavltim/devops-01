@@ -1,0 +1,18 @@
+ 1  hostnamectl set-hostname ansible-controller.example.com
+    2  bash
+    3  ip a s
+    4  vim /etc/hosts
+    5  passwd
+    6  ssh-keygen
+    7  cd .ssh/
+    8  ll
+    9  ansible all -m file -a 'dest=/tmp/data1 state=present'
+   10  ansible all -m file -a 'dest=/tmp/data1 state=directory'
+   11  ansible all -m user -a 'name=ra-one uid=1100 home/dracula state=present'
+   12  ansible all -m user -a 'name=ra-one uid=1100 home=/dracula state=present'
+   13  ansible all -m copy -a 'src=/etc/fstab dest=/tmp'
+   14  ansible all -m yum -a 'name=httpd state=present'
+   15  ansible all -m systemd -a 'name=httpd state=started enabled=true'
+   16  ansible india-server -m yum -a 'name=vsftpd state=present'
+   17  ansible india-server -m systemd -a 'name=vsftpd state=started enabled=true'
+   18  history

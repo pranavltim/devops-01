@@ -1,0 +1,32 @@
+EFS
+
+create tree instances => aws Linux,redhat,ubuntu in diff zones
+add nfs in security groups of all 3
+terminal:
+	cat /etc/os-release
+
+	aws linux : rpmquerynfs-utils
+
+	ubuntu: apt update
+	apt installnfs-common
+
+	redhat: yum install nfs-utils
+
+search efs => create file system  => create => available zones => attach => mount via ip
+
+terminal :-
+	 mkdir /nfs_data
+	 copy link of mounting
+	df -h
+
+
+
+Replication of current file system
+		
+		first create efs in singapore
+
+		create replication => Singapore => browse => select
+	
+
+  
+

@@ -1,0 +1,58 @@
+cloudping ==> to check the latency
+
+
+ec2 is a region based service not a Global based service
+
+Amazon use Nitro hypervisor
+
+
+Hypervisor split 
+
+
+EBS : - elastic block storage
+
+instance backed Storage: - }    Temporary Storage
+ephemeral : - }                  Temporary Storage
+ 
+
+VPC : - amazon own service.
+
+
+Subnet : - zone based service
+
+
+rpmquery httpd 
+
+cd  /var/www/html/   
+ 
+
+
+systemctl start httpd (Start apache)
+
+
+curl http://localhost 
+
+
+DISK commands : -
+
+lsblk
+
+lsblk -fs
+
+blkid (only list those disk which have file system )
+
+
+mkfs 
+
+
+mkfs.ext4  /dev/xvdb
+
+
+Add Volume  ==> Add file system ==> mount
+
+
+
+mount /dev/cvdb /data/efi
+
+
+

@@ -1,0 +1,12 @@
+ 1  hostnamectl set-hostname manager-host-2.example.com
+    2  bash
+    3  ip a s
+    4  passwd
+    5  vim /etc/ssh/sshd_config
+    6  systemctl restart sshd
+    7  systemctl enable sshd
+    8  cd .ssh/
+    9  cat authorized_keys
+   10  rpmquery vsftpd
+   11  systemctl status vsftpd
+   12  history

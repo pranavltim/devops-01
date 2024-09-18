@@ -1,0 +1,95 @@
+Docker Commands
+
+1  rpmquery docker
+    2  rpmquery podman
+    3  yum update -y
+    4  yum install docker* -y
+    5  yum repolist
+    6  docker info
+    7  systemctl status docker
+    8  systemctl start docker
+    9  systemctl enable docker
+   10  systemctl status docker
+   11  docker info
+   12  docker images
+   13  docker pull httpd
+   14  docker images
+   15  docker ps
+   16  docker ps -a
+   17  docker images
+   18  ip a s
+   19  docker pull ubuntu
+   20  docker images
+   21  ip a s
+   22  docker run -it --name web-app ubuntu:latest /bin/bash
+   23  docker ps -a
+   24  docker start web-app
+   25  docker ps -a
+   26  docker attach web-app
+   27  docker ps -a
+   28  ip a s
+   29  curl http://172.17.0.1
+   30  docker attach web-app
+   31  curl http://172.17.0.1
+   32  curl http://172.17.0.1:8080
+   33  docekr attach web-app
+   34  docker attach web-app
+   35  curl http://172.17.0.1
+   36  docker attach web-app
+   37  curl http://172.17.0.1
+   38  docker ps -a
+   39  docker attach web-app
+   40  ip a s
+   41  curl http://172.17.0.2
+   42  docker run -it ubuntu:latest /bin/bash
+   43  docker ps -a
+   44  curl 172.17.0.3
+   45  docker rename admiring_ritchie webapp2
+   46  docker ps -a
+   47  docker rename webapp2 web-app2
+   48  docker ps -a
+   49  docker run -it --name top-noch -p 8080:80 ubuntu:latest /bin/bash
+   50  docker ps
+   51  curl http://172.17.0.4
+   52  docker attach top-noch
+   53  curl http://172.17.0.4
+   54  docker run -it my-app -p 3600:80 ubuntu:latest /bin/bash
+   55  cd
+   56  docker run -it --name my-app -p 3600:80 ubuntu:latest /bin/bash
+   57  docker pa -a
+   58  docker ps -a
+   59  docker kill my-app
+   60  docker ps -a
+   61  docker volume ls
+   62  docker volume create my-vol
+   63  docker volume ls
+   64  cd /var/lib/docker/volumes/
+   65  ll
+   66  cd my-vol/
+   67  ll
+   68  cd
+   69  docker run -it --name data-app -p 2222:80 -v my-vol:/var/www/html ubuntu:latest bin/bash
+   70  docker ps -a
+   71  cd /var/lib/docker/volumes.
+   72  cd /var/lib/docker/volumes
+   73  ll
+   74  cd my-vol
+   75  ll
+   76  cd _data/
+   77  ll
+   78  cd
+   79  docker attach dta-app
+   80  docker attach data-app
+   81  cd /var/lib/docker/volumes/my-vol/_data/
+   82  ll
+   83  cat index.html
+   84  cat >> index.html "Hello Everyone,new line is added"
+   85  cat >> index.html
+   86  docker attach data-app
+   87  docker kill data-app
+   88  cd
+   89  docker kill data-app
+   90  cd /var/lib/docker/volumes/my-vol/_data/
+   91  ll
+   92  cat index.html
+   93  history

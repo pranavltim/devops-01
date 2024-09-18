@@ -1,0 +1,22 @@
+go to aws---mumbai ----search for S3 bucket---------open S3
+create bucket -------bucketname=aws-test-8015----------ACLS enabled --------untick  block all public access -----
+------- tick  I acknowledge    create bucket ---------click on the bucket --------upload file -----add file ----upload
+
+go to myprofile----sec credentials---click---access keys---create access key ----i understand---create
+copy both access and secret key-----download.csv file
+
+go to ec2 instance--create inst-----s3-inst---aws---t2.micro---existing key----1a---enale auto assign---existing group---
+launch----connect to it--cmd --paste---sudo su -
+go to google---https://cloudkul.com/blog/mounting-s3-bucket-linux-ec2-instance/------
+copy all commands for centa os in cmd one by one------
+in step 7 ---(one step where we need to edit a file---vim something---paste access key:paste seret key
+
+in step 9---do only a) give ur bucketname instead of the one given in command
+
+df-h(check bucket created)
+
+10)cd/mys3bucket
+echo "this is a test filr" >>test.txt
+
+now u can see test.txt in s3 bucket
+search s3 bucket-----buckets----aniket.....-----obj

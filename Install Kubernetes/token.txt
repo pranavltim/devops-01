@@ -1,0 +1,2 @@
+kubeadm join 172.31.33.90:6443 --token bnavf3.mk916g6ylhhcudu8 \
+        --discovery-token-ca-cert-hash sha256:b9b11076d267c57f714420efe5cc58f95ba0d6674d3def9accc95d7f463761ef

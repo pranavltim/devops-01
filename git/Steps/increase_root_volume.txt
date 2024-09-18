@@ -1,0 +1,6 @@
+Increase root volume in aws
+terminal =>
+	df -h
+	growpart /dev/xvda 1
+	xfs_growfs -d /dev/xvda1
+	df -h

@@ -1,0 +1,118 @@
+ 1  aws s3 mb s3://k8scluster-02
+    2  aws configure
+    3  aws s3 mb s3://k8scluster-02
+    4  export KOPS_STATE_STORE=s3://k8scluster-02
+    5  kops create cluster --cloud=aws --zones=ap-southeast-1b --name=k8scluster-02 -dns-zone=sanjayskv.in --dns private
+    6  kops create cluster --cloud=aws --zones=us-east-1b --name=k8scluster-02 -dns-zone=sanjayskv.in --dns private
+    7  kops create cluster --cloud=aws --zones=us-east-1b --name=k8scluster-02 -dns-zone=pps.in --dns private
+    8  kops create cluster --cloud=aws --zones=us-east-1 --name=k8scluster-02 -dns-zone=pps.in --dns private
+    9  kops create cluster --cloud=aws --zones=us-east-1b --name=k8scluster-02 --dns-zone=ec2-44-205-250-129.compute-1.amazonaws.com --dns private
+   10  kops create cluster --cloud=aws --zones=us-east-1b --name=k8scluster-02.pps.in --dns-zone=ec2-44-205-250-129.compute-1.amazonaws.com --dns private
+   11  passwd
+   12  install AWSCLI
+   13  cd
+   14  install AWSCLI
+   15  apt install unzip -y
+   16  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+   17  unzip awscliv2.zip
+   18  sudo ./aws/install
+   19  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+   20  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+   21  kubectl version --client
+   22  curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+   23  chmod +x ./kops
+   24  sudo mv ./kops /usr/local/bin/
+   25  curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+   26  chmod +x kops-linux-amd64
+   27  sudo mv kops-linux-amd64 /usr/local/bin/kops
+   28  sudo mv kops-linux-amd64 /usr/local/bin/kops /bin/
+   29  sudo mv kops-linux-amd64 /usr/local/bin/kops/bin/
+   30  sudo mv kops-linux-amd64 /usr/local/bin/kops /bin/
+   31  kops version
+   32  aws s3 mb s3://dev.k8s.sanjayskv.in
+   33  aws s3 mb s3://arn:aws:s3:::k8scluster-0
+   34  aws s3 mb arn:aws:s3:::k8scluster-01
+   35  aws s3 mb --help
+   36  history
+   37  kops version
+   38  Install kubectl
+   39  install kubectl
+   40  apt install kubectl
+   41  yum install kubectl
+   42  aws s3 mb s3://k8sBucket-02
+   43  aws configure
+   44  aws s3 mb s3://k8sBucket-02
+   45  aws configure
+   46  aws s3 mb s3://k8sBucket-02
+   47  aws configure
+   48  aws s3 mb s3://k8sBucket-02
+   49  aws s3 mb s3://dev.k8s.sanjayskv.in
+   50  x
+   51  aws s3 mb s3://dev.k8.pps.in
+   52  aws s3 ls
+   53  ssh-keygen
+   54  kops create cluster --cloud=aws --zones=us-east-1 --name=dev.k8.pps.in --dns-zone=pps.in --dns private
+   55  kops create cluster --cloud=aws --zones=us-east-1 --name=dev.k8.pps.in --dns-zone=sanjayskv.in --dns private
+   56  kops create cluster --cloud=aws --zones=ap-southeast-1b --name=dev.k8s.sanjayskv.in --dns-zone=sanjayskv.in --dns private
+   57  kops create cluster --cloud=aws --zones=us-east-1b --name=dev.k8.pps.in --dns-zone=pps.in --dns private
+   58  aws configure
+   59  kops create cluster --cloud=aws --zones=us-east-1b --name=dev.k8.pps.in --dns-zone=pps.in --dns private
+   60  kops update cluster dev.k8s.pps.in --yes --admin
+   61  kops update cluster
+   62  kops create cluster --cloud=aws --zones=us-east-1b --name=dev.k8.pps.in --dns-zone=pps.in --dns private
+   63  aws s3 mb s3://dev.k8.pps2.in
+   64  kops update cluster dev.k8s.sanjayskv.in --yes --admin
+   65  kops validate cluster
+   66  kops update cluster dev.k8s.pps.in --yes --admin
+   67  hostnamectl set-hostname kops-mach.example.com
+   68  bash
+   69  kops delete cluster k8scluster-02.pps.in
+   70  aws s3 mb s3://dev.k8s.pranavps.in
+   71  export KOPS_STATE_STORE=s3://dev.k8s.pranavps.in
+   72  kops create cluster --cloud=aws --zones=ap-southeast-1b --name=dev.k8s.pranavps.in --dns-zone=dev.k8s.pranavps.in --dns private
+   73  kops update cluster dev.k8s.pranavps.in --yes --admin
+   74  kops validate cluster
+   75  kops delete cluster dev.k8s.pranavps.in
+   76  kops create cluster --cloud=aws --zones=us-east-1b --name=dev.k8s.pranavps.in --dns-zone=dev.k8s.pranavps.in --dns private
+   77  kops update cluster
+   78  kops create cluster --cloud=aws --zones=us-east-1b --name=dev.k8s.pranavps.in --dns-zone=dev.k8s.pranavps.in --dns private
+   79  kops update cluster
+   80  kops delete cluster dev.k8s.pranavps.in --s
+   81  kops delete cluster dev.k8s.pranavps.in --yes
+   82  kops create cluster --cloud=aws --zones=us-east-1b --name=dev.k8s.pranavps.in --dns-zone=dev.k8s.pranavps.in --dns private
+   83  kops update cluster dev.k8s.sanjayskv.in --yes --admin
+   84  kops update cluster dev.k8s.pranavps.in --yes --admin
+   85  kops validate cluster
+   86  kubectl get nodes
+   87  kops validate cluster
+   88  kubectl run sample-nginx --image=nginx --replicas=2 --port=80
+   89  kubectl run --help
+   90  kubectl create deployment sample-nginx --image=nginx deployment.apps/sample-nginx created
+   91  kubectl create deployment sample-nginx --image=nginx
+   92  deployment.apps/sample-nginx created
+   93  kubectl create deployment sample-nginx --image=nginx deployment.apps/sample-nginx created
+   94  kubectl create deployment sample-nginx --image=nginx
+   95  deployment.apps/sample-nginx
+   96  kubectl create deployment sample-nginx --image=nginx deployment.apps/sample-nginx
+   97  kubectl create deployment sample-nginx --image=nginx
+   98  kubectl scale deployment sample-nginx --replicas=2
+   99  kubectl expose deployment sample-nginx --port=80 --target-port=80 --type=LoadBalancer
+  100  kubectl get deployments
+  101  kubectl get pods
+  102  kubectl expose deployment sample-nginx --port=80 --type=LoadBalancer
+  103  kubectl get services -o wide
+  104  kubectl get nodes
+  105  history
+  106  kops validate cluster
+  107  export KOPS_STATE_STORE=s3://dev.k8s.kajal.in
+  108  export KOPS_STATE_STORE=s3://dev.k8s.pranavps.in
+  109  kops update cluster dev.k8s.pranavps.in --yes --admin
+  110  kops validate cluster
+  111  mkdir /pdata
+  112  cd /pdata/
+  113  vim pps.yml
+  114  kubectl apply -f pps.yml
+  115  kubectl get pod
+  116  kubectl get pod nginix -o wide
+  117  kubectl get pod nginx -o wide
+  118  history

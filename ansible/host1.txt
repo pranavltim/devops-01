@@ -1,0 +1,28 @@
+host1
+ hostnamectl set-hostname manager-host-1.example.com
+    2  bash
+    3  ip a s
+    4  passwd
+    5  vim /etc/ssh/sshd_config
+    6  systemctl restart sshd
+    7  systemctl enable sshd
+    8  cd .ssh/
+    9  ll
+   10  cat authorized_keys
+   11  cd /tmp/
+   12  ll
+   13  cd
+   14  ll
+   15  cd /
+   16  ;;
+   17  ll
+   18  cd
+   19  cat /etc/passwd
+   20  cat /etc/passwd | grep -i ra-one
+   21  cd /tmp
+   22  ll
+   23  cd
+   24  rpmquery httpd
+   25  systemctl status httpd
+   26  rpmquery vsftpd
+   27  history

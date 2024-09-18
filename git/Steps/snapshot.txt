@@ -1,0 +1,17 @@
+snapshot => create snapshot
+
+snapshot => copy snapshot => ap-southeast-1
+
+snapshot => create volume using snapshot
+
+attach volume => select instance id => attach 
+
+connect to Singapore
+
+terminal : -
+	connect 
+	lsblk
+	mkdir /tech
+	mount /dev/xvdb /tech/
+	df -h
+	

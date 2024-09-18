@@ -1,0 +1,35 @@
+PORT FORWARDING
+
+
+	docker run -it --name top-noch -p 8080:80 ubuntu:latest /bin/bash
+	apt update -y
+	apt install apache2 -y
+	cd /var/www/html/
+	echo "Write" > index.html
+	ctrl p + q
+	docker ps
+	curl http://172.17.0.4
+	
+aws =>
+	copy public ip
+
+
+	
+
+	docker run -it my-app -p 3600:80 ubuntu:latest /bin/bash {allow port in security group of instance}
+	apt update -y
+	apt install apache2 -y
+	cd /var/www/html/
+	echo "write" > index.html
+	service apache2 start
+	copy ip:3600
+
+		
+
+	docker pa -a
+	docker kill my-app
+
+
+	
+		
+	

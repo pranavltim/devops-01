@@ -1,0 +1,39 @@
+ALLOCATE VOLUME TO DOCKER CONTAINER
+
+	docker volume ls
+	docker volume --help
+	docker volume create my-vol
+	docker volume ls
+	cd /var/lib/docker/volumes/
+	ll
+	cd my-vol/
+	ll
+	cd
+	docker run -it --name data-app -p 2222:80 -v my-vol:/var/www/html ubuntu:latest bin/bash
+	apt update -y
+	apt install apache2 -y
+	cd /var/www/html/
+	echo "write" > index.html
+	service apache2 start
+	ctrl p + q
+	docker ps -a
+	"Allow The Port 2222 to instance"
+	copy ip:2222 and check on browser
+	cd /var/lib/docker/volumes.
+	ll
+	cd my-vol/
+	cd _data/
+	ll
+	docker attach data-app
+	cat >> index.html "enter the data"
+	ctrl p+q
+	cd /
+
+	DOCKER KILL-DATA-APP
+	docker 
+	cd /var/lib/docker/volumes/my-vol/_data/
+	ll
+	
+	
+	
+	
